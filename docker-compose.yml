@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   redis:
-    image: redis:7.0
+    image: redis:4.0
     ports:
       - '6379:6379'
     volumes:
@@ -12,11 +12,11 @@ services:
       context: ./app
     links:
       - redis
-    ports:
-      - '8080:8080'
     env_file:
       - .env
   sidekiq:
+    logging:
+      driver: none
     build:
       context: ./app
     command: bundle exec sidekiq
@@ -29,6 +29,8 @@ services:
       context: ./proxy
     links:
       - app
+    stdin_open: true
+    tty: true
     ports:
       - '80:80'
 volumes:
