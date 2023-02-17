@@ -1,5 +1,5 @@
 # Dockerfile development version
-FROM ruby:3.2.0 AS ideals-development
+FROM ruby:3.1.3 AS ideals-development
 
 # Install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg -o /root/yarn-pubkey.gpg && apt-key add /root/yarn-pubkey.gpg
