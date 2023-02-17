@@ -1,7 +1,7 @@
-name: "Ruby on Rails CI"
+name: "Test workflow"
 on:
   push:
-    branches: [ "184418154-deployment" ]
+    branches: [ "dev" ]
   pull_request:
     branches: [ "dev" ]
 jobs:
