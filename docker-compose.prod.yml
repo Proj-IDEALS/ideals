@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    volumes:
+      - app-redis:/var/lib/redis/data
+  app:
+    build:
+      context: ./app
+    links:
+      - redis
+    env_file:
+      - .env
+  sidekiq:
+    logging:
+      driver: none
+    build:
+      context: ./app
+    command: bundle exec sidekiq
+    links:
+      - redis
+    env_file:
+      - .env
+  nginx:
+    build:
+      context: ./proxy
+    links:
+      - app
+    stdin_open: true
+    tty: true
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /home/ubuntu/certs/:/etc/nginx/ssl/:ro
+    restart: always
+volumes:
+  app-redis:
