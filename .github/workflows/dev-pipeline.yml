@@ -1,4 +1,4 @@
-name: "Test workflow"
+name: "CI Pipeline - DEV"
 on:
   push:
     branches: [ "dev" ]
@@ -29,4 +29,9 @@ jobs:
       - name: Run tests
         run: bin/rake
         working-directory: ./app
-
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the docker_compose
+        run: docker-compose up -d --build
