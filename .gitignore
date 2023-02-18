@@ -36,5 +36,5 @@
 **/.idea
 **/.DS_Store
 
-./app/temp
-./app/log
+app/tmp
+app/log
