@@ -35,13 +35,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+      - /home/ubuntu/certs/:/etc/nginx/ssl/:ro
     restart: always
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
 volumes:
   app-redis:
