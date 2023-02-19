@@ -25,7 +25,7 @@ class NewobjectsController < ApplicationController
 
     respond_to do |format|
       if @newobject.save
-        format.html { redirect_to newobject_url(@newobject), notice: "Newobject was successfully created." }
+        format.html { redirect_to newobject_url(@newobject), notice: "New Object was successfully created." }
         format.json { render :show, status: :created, location: @newobject }
       else
         format.html { render :new, status: :unprocessable_entity }
