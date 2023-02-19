@@ -65,6 +65,6 @@ class NewobjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def newobject_params
-      params.require(:newobject).permit(:Name, :Category, :Details)
+      params.require(:newobject).permit(:Name, :Category, :Details, :Linkto)
     end
 end
