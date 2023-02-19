@@ -25,6 +25,18 @@
    <%= form.label :Details %>
    <%= form.text_area :Details %>
  </div>
+ <div class="field">
+ <%= form.label :Linkto %>  
+ <%= form.select(:Linkto, [['assumption1', 'assumption1'],
+  ['assumption2', 'assumption2'],
+  ['assumption3', 'assumption3'],
+  ['assumption4', 'assumption4'],
+  ['assumption5', 'assumption5']
+],{ :prompt => "Please select"},
+  { :multiple => false, :size => 5 }
+) %>
+                                    
+</div>
  <div class="actions">
    <%= form.submit %>
  </div>

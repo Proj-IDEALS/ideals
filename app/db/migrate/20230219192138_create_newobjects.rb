@@ -4,6 +4,7 @@ class CreateNewobjects < ActiveRecord::Migration[7.0]
       t.string :Name
       t.string :Category
       t.text :Details
+      t.string :Linkto
 
       t.timestamps
     end
