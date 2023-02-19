@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Newobjects</h1>
+
+<div id="newobjects">
+  <% @newobjects.each do |newobject| %>
+    <%= render newobject %>
+    <p>
+      <%= link_to "Show this newobject", newobject %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New newobject", new_newobject_path %>
