@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @newobject %>
+
+<div>
+  <%= link_to "Edit this New Object", edit_newobject_path(@newobject) %> |
+  <%= link_to "Back to New Objects", newobjects_path %>
+
+  <%= button_to "Destroy this New Object", @newobject, method: :delete %>
+</div>
