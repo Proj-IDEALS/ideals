@@ -1,0 +1,2 @@
+class Newobject < ApplicationRecord
+end
