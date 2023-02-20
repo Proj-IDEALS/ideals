@@ -26,6 +26,9 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
         working-directory: ./app
+      - name: Generate tests
+        run: bin/rails generate rspec:install
+        working-directory: ./app
       - name: Run tests
         run: bin/rake
         working-directory: ./app
