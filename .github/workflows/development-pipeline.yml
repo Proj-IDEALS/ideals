@@ -1,12 +1,15 @@
-name: "CI Pipeline - DEV"
+name: "CI Pipeline - DEVELOPMENT"
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "main" ]
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
     env:
       RAILS_ENV: test
     steps:
@@ -19,19 +22,14 @@ jobs:
           bundler-cache: true
       - name: Install packages
         run: bundle install
-        working-directory: ./app
-      - name: Set up database schema
-        run: bin/rails db:migrate
-        working-directory: ./app
       - name: Set up database schema
         run: bin/rails db:schema:load
-        working-directory: ./app
+      - name: Set up database schema
+        run: bin/rails db:migrate
       - name: Generate tests
         run: bin/rails generate rspec:install
-        working-directory: ./app
       - name: Run tests
         run: bin/rake
-        working-directory: ./app
   build:
     runs-on: ubuntu-latest
     steps:
