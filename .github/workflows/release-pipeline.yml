@@ -1,12 +1,16 @@
 name: "CI/CD Pipeline - RELEASE"
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
     env:
-      RAILS_ENV: test
+      RAILS_ENV: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -17,27 +21,21 @@ jobs:
           bundler-cache: true
       - name: Install packages
         run: bundle install
-        working-directory: ./app
       - name: Set up database schema
         run: bin/rails db:migrate
-        working-directory: ./app
-      - name: Set up database schema
-        run: bin/rails db:schema:load
-        working-directory: ./app
       - name: Generate tests
         run: bin/rails generate rspec:install
-        working-directory: ./app
       - name: Run tests
         run: bin/rake
-        working-directory: ./app
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build the docker_compose
         run: docker-compose -f docker-compose.prod.yml up -d --build
   deploy:
-    needs: build
+    needs: [test, build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -55,5 +53,6 @@ jobs:
             git fetch --all &&
             git reset --hard origin/main &&
             git pull origin main &&
+            docker-compose -f docker-compose.prod.yml down && 
             docker-compose -f docker-compose.prod.yml up -d --build 
             '
