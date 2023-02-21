@@ -11,6 +11,27 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_02_19_203549) do
+  create_table "assumptions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "assumptions_practices", id: false, force: :cascade do |t|
+    t.integer "assumption_id", null: false
+    t.integer "practice_id", null: false
+    t.index ["assumption_id"], name: "index_assumptions_practices_on_assumption_id"
+    t.index ["practice_id"], name: "index_assumptions_practices_on_practice_id"
+  end
+
+  create_table "assumptions_theories", id: false, force: :cascade do |t|
+    t.integer "assumption_id", null: false
+    t.integer "theory_id", null: false
+    t.index ["assumption_id"], name: "index_assumptions_theories_on_assumption_id"
+    t.index ["theory_id"], name: "index_assumptions_theories_on_theory_id"
+  end
+
   create_table "newobjects", force: :cascade do |t|
     t.string "Name"
     t.string "Category"
@@ -18,6 +39,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_203549) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "Linkto"
+  end
+
+  create_table "practices", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "theories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
