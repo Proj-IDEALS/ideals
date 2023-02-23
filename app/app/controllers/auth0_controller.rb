@@ -28,7 +28,7 @@ class Auth0Controller < ApplicationController
 
   def logout_url
     request_params = {
-      returnTo: "https://xytom-cuddly-chainsaw-6p9w7qv79jqc477g-3000.preview.app.github.dev/",
+      returnTo: "https://idealsmaps.xyz",
       client_id: AUTH0_CONFIG['auth0_client_id']
     }
 
