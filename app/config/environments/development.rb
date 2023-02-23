@@ -68,4 +68,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "idealmaps.xyz"
+  config.hosts << "xytom-cuddly-chainsaw-6p9w7qv79jqc477g-3000.preview.app.github.dev"
+
 end
