@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Assumptions</h1>
+
+<div id="assumptions">
+  <% @assumptions.each do |assumption| %>
+    <%= render assumption %>
+    <p>
+      <%= link_to "Show this assumption", assumption %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New assumption", new_assumption_path %>

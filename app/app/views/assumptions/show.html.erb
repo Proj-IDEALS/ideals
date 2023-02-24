@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @assumption %>
+
+<div>
+  <%= link_to "Edit this assumption", edit_assumption_path(@assumption) %> |
+  <%= link_to "Back to assumptions", assumptions_path %>
+
+  <%= button_to "Destroy this assumption", @assumption, method: :delete %>
+</div>
