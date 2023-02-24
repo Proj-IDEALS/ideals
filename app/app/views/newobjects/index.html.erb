@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>New Objects</h1>
+<h1>List of Objects</h1>
+
+<%= link_to "Create New Object", new_newobject_path %>
 
 <div id="newobjects">
   <% @newobjects.each do |newobject| %>
@@ -10,5 +12,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New Object", new_newobject_path %>

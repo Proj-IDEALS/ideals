@@ -14,52 +14,21 @@
   
 <%= form_with(model: newobject, local: true) do |form| %>
  <div class="field">
-   <%= form.label :Name %>
-   <%= form.text_field :Name %>
- </div>
- <div class="field">
    <%= form.label :Category %>
    <%= form.select :Category, ["theory", "assumption", "practice"] %>
  </div>
  <div class="field">
-   <%= form.label :Details %>
-   <%= form.text_area :Details %>
+   <%= form.label :Name %>
+   <%= form.text_field :Name %>
  </div>
  <div class="field">
- <%= form.label :Linkto %>  
- <%= form.select(:Linkto, [['assumption1', 'assumption1'],
-  ['assumption2', 'assumption2'],
-  ['assumption3', 'assumption3'],
-  ['assumption4', 'assumption4'],
-  ['assumption5', 'assumption5']
-],{ :prompt => "Please select"},
-  { :multiple => false, :size => 5 }
-) %>
-                                    
+   <%= form.label :Details %>
+   <%= form.text_area :Details %>
+ </div>                                    
 </div>
  <div class="actions">
    <%= form.submit "Create New Object" %>
  </div>
 <% end %>
 
-<!--
-  <div>
-    <%= form.label :Name, style: "display: block" %>
-    <%= form.text_field :Name %>
-  </div>
-
-  <div>
-    <%= form.label :Category, style: "display: block" %>
-    <%= form.text_field :Category %>
-  </div>
-
-  <div>
-    <%= form.label :Details, style: "display: block" %>
-    <%= form.text_area :Details %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-  -->
 <% end %>
