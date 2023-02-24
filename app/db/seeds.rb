@@ -5,3 +5,64 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+more_theories = [
+    {:name => 'Cognitive Constructive Theory', :description => '',
+      },
+    {:name => 'Social Constructive Theory', :description => '',
+      },
+    {:name => 'Situated Learning Theory', :description => '',
+      },
+    {:name => 'Critical Pedagogy', :description => '',
+      },
+    {:name => 'Transformative Learning theory', :description => '',
+
+    }
+    
+    ]
+    more_theories.each do |theory|
+        Theory.create!|theory|
+    end
+
+more_assumptions = [
+    {:name => 'learning is construction of knowledge', :description => '',
+    },
+    {:name => 'learning requires scaffolding', :description => '',
+    },
+    {:name => 'learning is a generative process', :description => '',
+    },
+    {:name => 'learning occurs within a zone of proximal development', :description => '',
+    },
+    {:name => 'learning requires interpretation', :description => '',
+    },
+    {:name => 'reality is created by joint experiences', :description => '',
+    },
+    {:name => 'learning is not merely individual', :description => '',
+    },
+    {:name => 'learning is in action, activity interaction', :description => '',
+    },
+   ]
+   more_assumptions.each do |assumption|
+      Assumption.create!|assumption|
+    end
+
+more_practices = [
+    {:name => 'concept mapping', :description => '',
+    },
+    {:name => 'individual problem solving', :description => '',
+    },
+    {:name => 'think pair share', :description => '',
+    },
+    {:name => 'case-based learning', :description => '',
+    },
+    {:name => 'watching', :description => '',
+    },
+    {:name => 'reading', :description => '',
+    },
+    {:name => 'listening', :description => '',
+    },
+    {:name => 'in-class observation', :description => '',
+    },
+   ]
+   more_practices.each do |practice|
+      Practice.create!|practice|
+    end
