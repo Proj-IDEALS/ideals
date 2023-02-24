@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+more_theories = [
+    {:name => 'Cognitive Constructive Theory', :description => '',
+      },
+    {:name => 'Social Constructive Theory', :description => '',
+      },
+    {:name => 'Situated Learning Theory', :description => '',
+      },
+    {:name => 'Critical Pedagogy', :description => '',
+      },
+    {:name => 'Transformative Learning theory', :description => '',
+
+    }
+    
+    ]
