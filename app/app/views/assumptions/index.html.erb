@@ -4,7 +4,7 @@
 
 <div id="assumptions">
   <% @assumptions.each do |assumption| %>
-    <%= render assumption %>
+    <strong><%= assumption.name %></strong>
     <p>
       <%= link_to "Show this assumption", assumption %>
     </p>

@@ -9,4 +9,17 @@
     <%= assumption.description %>
   </p>
 
+  <% assumption.theories.each do |theory| %>
+    <p>
+      <strong>Theory:</strong>
+      <%= theory.name %>
+    </p>
+  <% end %>
+
+  <% assumption.practices.each do |practice| %>
+    <p>
+      <strong>Practice:</strong>
+      <%= practice.name %>
+    </p>
+  <% end %>
 </div>

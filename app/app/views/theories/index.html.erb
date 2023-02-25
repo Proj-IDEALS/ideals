@@ -4,7 +4,7 @@
 
 <div id="theories">
   <% @theories.each do |theory| %>
-    <%= render theory %>
+    <strong><%= theory.name %></strong>
     <p>
       <%= link_to "Show this theory", theory %>
     </p>

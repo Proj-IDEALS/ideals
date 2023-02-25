@@ -9,4 +9,10 @@
     <%= practice.description %>
   </p>
 
+  <% practice.assumptions.each do |assump| %>
+    <p>
+      <strong>Assumption:</strong>
+      <%= assump.name %>
+    </p>
+  <% end %>
 </div>
