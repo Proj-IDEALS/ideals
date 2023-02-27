@@ -15,6 +15,7 @@ WORKDIR $INSTALL_PATH
 COPY . .
 RUN rm -rf node_modules vendor
 RUN gem install rails bundler
+RUN bundle update rack-protection
 RUN bundle install
 RUN yarn install
 

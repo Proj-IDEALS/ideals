@@ -1,0 +1,28 @@
+name: "Dev Pipeline - Deploy to Azure Web App Service"
+on:
+  push:
+    branches: [ "User-Login" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ideal.azurecr.io
+        username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
+        password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
+
+    - name: Build the Docker image and Push to Azure Container Registry
+      working-directory: ./app
+      run: |
+        docker build . -t ideal.azurecr.io/ideals:${{ github.sha }}
+        docker push ideal.azurecr.io/ideals:${{ github.sha }}     
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'ideals-dev'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        images: 'ideal.azurecr.io/ideals:${{ github.sha }}'
