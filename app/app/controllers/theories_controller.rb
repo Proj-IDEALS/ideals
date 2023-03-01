@@ -4,6 +4,7 @@ class TheoriesController < ApplicationController
   # GET /theories or /theories.json
   def index
     @theories = Theory.all
+    @selected_assumptions = Assumption.where(id: params[:assumptions])
   end
 
   # GET /theories/1 or /theories/1.json

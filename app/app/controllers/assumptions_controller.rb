@@ -4,6 +4,9 @@ class AssumptionsController < ApplicationController
   # GET /assumptions or /assumptions.json
   def index
     @assumptions = Assumption.all
+    @selected_practices = Practice.where(id: params[:practices])
+    @selected_theories = Theory.where(id: params[:theories])
+  
   end
 
   # GET /assumptions/1 or /assumptions/1.json

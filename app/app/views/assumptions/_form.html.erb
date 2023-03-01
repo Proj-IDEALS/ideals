@@ -21,6 +21,22 @@
     <%= form.text_field :description %>
   </div>
 
+<h3>List of Theories</h3>
+  <%= form_tag theories_path, method: :get do %>
+    <% Theory.all.each do |theory| %>
+      <%= check_box_tag "theories[]", theory.id %>
+      <%= label_tag "theories_#{theory.id}", theory.name %><br>
+    <% end %>
+  <% end %>
+  
+<h3>List of Practices</h3>
+  <%= form_tag practices_path, method: :get do %>
+    <% Practice.all.each do |practice| %>
+      <%= check_box_tag "practices[]", practice.id %>
+      <%= label_tag "practices_#{practice.id}", practice.name %><br>
+    <% end %>
+  <% end %>
+
   <div>
     <%= form.submit %>
   </div>

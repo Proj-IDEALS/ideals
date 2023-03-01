@@ -5,6 +5,9 @@
 <div id="theories">
   <% @theories.each do |theory| %>
     <strong><%= theory.name %></strong>
+    <% if @selected_assumptions.any? %>
+      <%= link_to "Assumptions", assumptions_path(ids: @selected_assumptions.pluck(:id)) %>
+    <% end %>
     <p>
       <%= link_to "Show this theory", theory %>
     </p>

@@ -5,10 +5,19 @@
 <div id="assumptions">
   <% @assumptions.each do |assumption| %>
     <strong><%= assumption.name %></strong>
+    <% if @selected_practices.any? %>
+      <%= link_to "Practices", practices_path(ids: @selected_practices.pluck(:id)) %>
+    <% end %>
+
+    <% if @selected_theories.any? %>
+      <%= link_to "Theories", theories_path(ids: @selected_theories.pluck(:id)) %>
+    <% end %>
     <p>
       <%= link_to "Show this assumption", assumption %>
     </p>
   <% end %>
 </div>
+
+
 
 <%= link_to "New assumption", new_assumption_path %>
