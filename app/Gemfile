@@ -79,5 +79,10 @@ gem 'rubocop', require: false
 gem 'unicorn', '~> 6.1.0'
 gem 'sidekiq', '~> 6.4.2'
 gem 'redis-rails', '~> 5.0.2'
+
+#login
+gem 'omniauth-auth0', '~> 3.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication requests
+
 gem 'webpacker'
 gem 'react-rails'

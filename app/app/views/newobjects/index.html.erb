@@ -1,8 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
+<!-- Place a login button anywhere on your application -->
+  <%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false } %>
+  <!-- Place a logout button anywhere on your application -->
+  <%= button_to 'Logout', 'auth/logout', method: :get, data: { turbo: false } %>
+
+
 <h1>List of Objects</h1>
 
 <%= link_to "Create New Object", new_newobject_path %>
+
+
 
 <div id="newobjects">
   <% @newobjects.each do |newobject| %>
