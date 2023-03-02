@@ -38,3 +38,5 @@
 
 app/tmp
 app/log
+
+app/node_modules/
