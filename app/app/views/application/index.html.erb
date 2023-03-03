@@ -35,7 +35,7 @@
 
     </ul>
   </nav><!-- End Icons Navigation -->
-  <% if session[:userinfo].present? %>
+  <% if !session[:userinfo].present? %>
   <%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false }, :class => "btn btn-light", :style => "margin-right:10px" %>
 
               <% else %>
