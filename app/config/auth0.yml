@@ -2,5 +2,9 @@ development:
   auth0_domain: ideals.us.auth0.com
   auth0_client_id: zVt9TW2CvNPKc6tVavCcpov9pIuOtRxW
   auth0_client_secret: 6HFPxe7fKC-oM2FImZcp8FM0YxNfcJwj6-Jr_5KVGI7EHCKfrhpqb78bgyjWSbCW
+test:
+  auth0_domain:
+  auth0_client_id:
+  auth0_client_secret:
 #Use Duo
 #Duo API Endpoint:api-35bcf667.duosecurity.com
