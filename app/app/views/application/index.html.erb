@@ -35,7 +35,13 @@
 
     </ul>
   </nav><!-- End Icons Navigation -->
+  <% if session[:userinfo].present? %>
   <%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false }, :class => "btn btn-light", :style => "margin-right:10px" %>
+
+              <% else %>
+              <%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false }, :class => "btn btn-light", :style => "margin-right:10px" %>
+
+            <% end %>
 </header><!-- End Header -->
 
 <main id="main" class="main">
