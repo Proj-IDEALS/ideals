@@ -1,7 +1,7 @@
 name: "Dev Pipeline - Deploy to Azure Web App Service"
 on:
   push:
-    branches: [ "User-Login" ]
+    branches: [ "Azure-Dev-Preview" ]
 jobs:
   build:
     runs-on: ubuntu-latest
