@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_203549) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_001044) do
   create_table "assumptions", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -30,6 +30,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_203549) do
     t.integer "theory_id", null: false
     t.index ["assumption_id"], name: "index_assumptions_theories_on_assumption_id"
     t.index ["theory_id"], name: "index_assumptions_theories_on_theory_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "newobjects", force: :cascade do |t|
