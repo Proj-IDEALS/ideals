@@ -83,6 +83,3 @@ gem 'redis-rails', '~> 5.0.2'
 #login
 gem 'omniauth-auth0', '~> 3.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication requests
-
-gem 'webpacker'
-gem 'react-rails'
