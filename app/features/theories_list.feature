@@ -3,14 +3,14 @@ Feature: Entity page should contain all the entities of the same type in the dat
     Scenario: Theories page should contain all theories in the database
         Given some theories exist
         When theories page is visited
-        Then I should see a list of all theories
+        Then I should see a list of all theories and links
 
     Scenario: Assumptions page should contain all assumptions in the database
         Given some assumptions exist
         When assumptions page is visited
-        Then I should see a list of all assumptions
+        Then I should see a list of all assumptions and links
 
     Scenario: Practices page should contain all practices in the database
         Given some practices exist
         When practices page is visited
-        Then I should see a list of all practices
+        Then I should see a list of all practices and links
