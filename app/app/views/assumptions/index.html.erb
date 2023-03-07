@@ -4,11 +4,13 @@
 
 <div id="assumptions">
   <% @assumptions.each do |assumption| %>
-    <strong><%= assumption.name %></strong>
     <p>
-      <%= link_to "Show this assumption", assumption %>
+      <strong><%= assumption.name %></strong>
+      <em><%= link_to "show this assumption", assumption %></em>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New assumption", new_assumption_path %>
+<p><%= link_to "New assumption", new_assumption_path %></p>
+
+<p><%= link_to "Back to home", root_path %></p>
