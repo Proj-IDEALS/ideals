@@ -1,6 +1,6 @@
-Given('starting-point page is visited') do
-    visit root_path
-end
+# Given('root page is visited') do
+#     visit root_path
+# end
 
 When('I click on a link containing the word {word}') do |obj_type|
     click_link :text => /^.*#{obj_type}.*$/i
