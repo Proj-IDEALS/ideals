@@ -20,13 +20,14 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
-<h3>List of Assumptions</h3>
-  <%= form_tag assumptions_path, method: :get do %>
+
+  <div class="field">
+    <%= form.label :assumption_ids, "Select Assumptions" %>
     <% Assumption.all.each do |assumption| %>
-      <%= check_box_tag "assumptions[]", assumption.id %>
-      <%= label_tag "assumptions_#{assumption.id}", assumption.name %><br>
+      <%= check_box_tag "theory[assumption_ids][]", assumption.id, @theory.assumptions.include?(assumption) %>
+      <%= assumption.name %>
     <% end %>
-  <% end %>
+  </div>
 
   <div>
     <%= form.submit %>

@@ -5,6 +5,7 @@ class TheoriesController < ApplicationController
   def index
     @theories = Theory.all
     @selected_assumptions = Assumption.where(id: params[:assumptions])
+    @theories = Theory.includes(:assumptions).all
   end
 
   # GET /theories/1 or /theories/1.json
@@ -33,10 +34,12 @@ class TheoriesController < ApplicationController
         format.json { render json: @theory.errors, status: :unprocessable_entity }
       end
     end
+    puts params.inspect
   end
 
   # PATCH/PUT /theories/1 or /theories/1.json
   def update
+
     respond_to do |format|
       if @theory.update(theory_params)
         format.html { redirect_to theory_url(@theory), notice: "Theory was successfully updated." }
@@ -46,6 +49,7 @@ class TheoriesController < ApplicationController
         format.json { render json: @theory.errors, status: :unprocessable_entity }
       end
     end
+    puts params.inspect
   end
 
   # DELETE /theories/1 or /theories/1.json
@@ -66,6 +70,6 @@ class TheoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def theory_params
-      params.require(:theory).permit(:name, :description)
+      params.require(:theory).permit(:name, :description, assumption_ids: [])
     end
 end

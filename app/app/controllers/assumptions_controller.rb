@@ -68,6 +68,6 @@ class AssumptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def assumption_params
-      params.require(:assumption).permit(:name, :description)
+      params.require(:assumption).permit(:name, :description, theory_ids: [], practice_ids: [] )
     end
 end

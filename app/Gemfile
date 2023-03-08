@@ -58,7 +58,7 @@ group :development do
   gem 'web-console'
   gem 'rb-readline'
   gem 'guard'
-  gem 'guard-livereload', '~> 2.5'
+  #gem 'guard-livereload', '~> 2.5'
   gem 'rack-livereload', '~> 0.3.16'
 end
 
