@@ -22,9 +22,25 @@ class MainController < ApplicationController
   # POST /newobjects or /newobjects.json
   def create
     @newobject = Newobject.new(newobject_params)
+    category = newobject_params[:Category]
 
     respond_to do |format|
       if @newobject.save
+        case category
+        when 'assumption'
+          assumption = Assumption.new(name: @newobject.Name, description: @newobject.Details)
+          assumption.save
+          #@newobject.assumption = assumption
+        when 'theory'
+          theory = Theory.new(name: @newobject.Name, description: @newobject.Details)
+          theory.save
+          #@newobject.theory = theory
+        when 'practice'
+          practice = Practice.new(name: @newobject.Name, description: @newobject.Details)
+          practice.save
+          #@newobject.practice = practice
+        end
+
         format.html { redirect_to newobject_url(@newobject), notice: "New Object was successfully created." }
         format.json { render :show, status: :created, location: @newobject }
       else
@@ -38,7 +54,7 @@ class MainController < ApplicationController
   def update
     respond_to do |format|
       if @newobject.update(newobject_params)
-        format.html { redirect_to newobject_url(@newobject), notice: "Newobject was successfully updated." }
+        format.html { redirect_to newobject_url(@newobject), notice: "New object was successfully updated." }
         format.json { render :show, status: :ok, location: @newobject }
       else
         format.html { render :edit, status: :unprocessable_entity }
