@@ -9,7 +9,8 @@ Feature: Entities page should contain all the entities of the same type in the d
         | Theory 3  | Desc3       |
 
         When theories page is visited
-        Then I should see "Theory 1"
+        # Then I should see "Theory 1"
+        Then I should see link to theories named "Theory 4"
         And I should see "Theory 2"
         And I should see "Theory 3"
 
@@ -31,7 +32,7 @@ Feature: Entities page should contain all the entities of the same type in the d
         | Practice 1  | Desc1       |
         | Practice 2  | Desc2       |
         | Practice 3  | Desc3       |
-        
+
         When practices page is visited
         Then I should see "Practice 1"
         And I should see "Practice 2"

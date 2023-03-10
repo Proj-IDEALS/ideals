@@ -7,3 +7,8 @@
 #     end
 # end
 
+# Then('I should see link to theories named {string}') do |entity_name|
+#     entity_type = theories
+#     entity = classes[entity_type].find_by(name: entity_name)
+#     expect(page).to have_link(href: "/#{entity_type}/#{entity.id}")
+# end
