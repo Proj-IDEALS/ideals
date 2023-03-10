@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :practices
 
   # Defines the root path route ("/")
-  # root "articles#index"
-
+   # root "articles#index"
+  root "main#index"
+  
   #User Login
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
