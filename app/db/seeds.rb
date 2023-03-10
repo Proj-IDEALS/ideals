@@ -19,9 +19,7 @@ more_theories = [
     }
     
     ]
-    more_theories.each do |theory|
-        Theory.create!|theory|
-    end
+    Theory.create!(more_theories)
 
 more_assumptions = [
     {:name => 'learning is construction of knowledge', :description => '',
@@ -41,9 +39,7 @@ more_assumptions = [
     {:name => 'learning is in action, activity interaction', :description => '',
     },
    ]
-   more_assumptions.each do |assumption|
-      Assumption.create!|assumption|
-    end
+   Assumption.create!(more_assumptions)
 
 more_practices = [
     {:name => 'concept mapping', :description => '',
@@ -63,6 +59,4 @@ more_practices = [
     {:name => 'in-class observation', :description => '',
     },
    ]
-   more_practices.each do |practice|
-      Practice.create!|practice|
-    end
+   Practice.create!(more_practices)
