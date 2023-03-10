@@ -4,11 +4,13 @@
 
 <div id="practices">
   <% @practices.each do |practice| %>
-    <strong><%= practice.name %></strong>
     <p>
-      <%= link_to "Show this practice", practice %>
+      <strong><%= practice.name %></strong>
+      <em><%= link_to "show this practice", practice %></em>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New practice", new_practice_path %>
+<p><%= link_to "New practice", new_practice_path %></p>
+
+<p><%= link_to "Back to home", root_path %></p>

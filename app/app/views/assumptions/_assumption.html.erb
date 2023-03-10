@@ -1,7 +1,6 @@
 <div id="<%= dom_id assumption %>">
   <p>
-    <strong>Name:</strong>
-    <%= assumption.name %>
+    <h2><%= assumption.name %></h2>
   </p>
 
   <p>
@@ -13,6 +12,7 @@
     <p>
       <strong>Theory:</strong>
       <%= theory.name %>
+      <em><%= link_to "show this theory", theory_path(theory.id) %></em>
     </p>
   <% end %>
 
@@ -20,6 +20,7 @@
     <p>
       <strong>Practice:</strong>
       <%= practice.name %>
+      <em><%= link_to "show this practice", practice_path(practice.id) %></em>
     </p>
   <% end %>
 </div>

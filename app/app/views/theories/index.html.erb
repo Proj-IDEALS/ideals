@@ -4,11 +4,13 @@
 
 <div id="theories">
   <% @theories.each do |theory| %>
-    <strong><%= theory.name %></strong>
     <p>
-      <%= link_to "Show this theory", theory %>
+      <strong><%= theory.name %></strong>
+      <em><%= link_to "show this theory", theory %></em>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New theory", new_theory_path %>
+<p><%= link_to "New theory", new_theory_path %></p>
+
+<p><%= link_to "Back to home", root_path %></p>
