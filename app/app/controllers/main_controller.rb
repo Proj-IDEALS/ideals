@@ -1,4 +1,4 @@
-class NewobjectsController < ApplicationController
+class MainController < ApplicationController
   before_action :set_newobject, only: %i[ show edit update destroy ]
 
   # GET /newobjects or /newobjects.json

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @theory %>
+
+<div>
+  <%= link_to "Edit this theory", edit_theory_path(@theory) %> |
+  <%= link_to "Back to theories", theories_path %>
+
+  <%= button_to "Destroy this theory", @theory, method: :delete %>
+</div>

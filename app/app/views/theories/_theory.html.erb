@@ -1,0 +1,19 @@
+<div id="<%= dom_id theory %>">
+  <p>
+    <h2><%= theory.name %></h2>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= theory.description %>
+  </p>
+
+  <% theory.assumptions.each do |assump| %>
+    <p>
+      <strong>Assumption:</strong>
+      <%= assump.name %>
+      <em><%= link_to "show this assumption", assumption_path(assump.id) %></em>
+    </p>
+  <% end %>
+
+</div>

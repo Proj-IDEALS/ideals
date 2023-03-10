@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  resources :newobjects
 
+=======
+>>>>>>> 7b45c824 (Auto-generated interfaces for each model)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :theories
   resources :assumptions

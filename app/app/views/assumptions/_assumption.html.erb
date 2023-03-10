@@ -1,0 +1,26 @@
+<div id="<%= dom_id assumption %>">
+  <p>
+    <h2><%= assumption.name %></h2>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= assumption.description %>
+  </p>
+
+  <% assumption.theories.each do |theory| %>
+    <p>
+      <strong>Theory:</strong>
+      <%= theory.name %>
+      <em><%= link_to "show this theory", theory_path(theory.id) %></em>
+    </p>
+  <% end %>
+
+  <% assumption.practices.each do |practice| %>
+    <p>
+      <strong>Practice:</strong>
+      <%= practice.name %>
+      <em><%= link_to "show this practice", practice_path(practice.id) %></em>
+    </p>
+  <% end %>
+</div>

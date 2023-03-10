@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Theories</h1>
+
+<div id="theories">
+  <% @theories.each do |theory| %>
+    <p>
+      <strong><%= theory.name %></strong>
+      <em><%= link_to "show this theory", theory %></em>
+    </p>
+  <% end %>
+</div>
+
+<p><%= link_to "New theory", new_theory_path %></p>
+
+<p><%= link_to "Back to home", root_path %></p>
