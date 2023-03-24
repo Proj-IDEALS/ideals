@@ -37,6 +37,12 @@ class TheoriesController < ApplicationController
   # PATCH/PUT /theories/1 or /theories/1.json
   def update
     respond_to do |format|
+      
+       #no assumptions are selected
+      if params[:theory][:assumption_ids].nil?
+        @theory.assumptions.clear
+      end
+      
       if @theory.update(theory_params)
         format.html { redirect_to theory_url(@theory), notice: "Theory was successfully updated." }
         format.json { render :show, status: :ok, location: @theory }
@@ -65,6 +71,6 @@ class TheoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def theory_params
-      params.require(:theory).permit(:name, :description)
+      params.require(:theory).permit(:name, :description, assumption_ids: [])
     end
 end
