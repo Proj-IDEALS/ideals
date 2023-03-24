@@ -21,6 +21,14 @@
     <%= form.text_field :description %>
   </div>
 
+  <div class="field">
+  <%= form.label :assumption_ids, "Select Assumptions" %><br>
+  <% Assumption.all.each do |assumption| %>
+    <%= check_box_tag "theory[assumption_ids][]", assumption.id, @theory.assumptions.include?(assumption), id: "assumption_#{assumption.id}" %>
+    <%= label_tag "assumption_#{assumption.id}", assumption.name, for: "assumption_#{assumption.id}" %>
+  <% end %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
