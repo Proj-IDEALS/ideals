@@ -9,13 +9,17 @@ classes = {
 
 Given('the following {word} exist:') do |entity_type, data_table|
     data_table.hashes.each do |data|
-        print(data)
         classes[entity_type].create data
     end
   end
 
-When ('{word} page is visited') do |link|
-    visit send("#{link}_path")
+When (/^([^\(\)]*)(?:\(name="(.*)"\))? page is visited/) do |entity_type, param|
+    if param.nil?
+        visit send("#{entity_type}_path")
+    else
+        entity_id = classes[entity_type].find_by(name: param).id
+        visit "/#{entity_type}/#{entity_id}"
+    end
 end
 
 Then(/I should see "(.*)"/) do |content|

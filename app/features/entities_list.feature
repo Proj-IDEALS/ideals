@@ -10,9 +10,11 @@ Feature: Entities page should contain all the entities of the same type in the d
 
         When theories page is visited
         Then I should see "Theory 1"
-        # Then I should see link to theories named "Theory 4"
+        Then I should see link to theories named "Theory 1"
         And I should see "Theory 2"
+        And I should see link to theories named "Theory 2"
         And I should see "Theory 3"
+        And I should see link to theories named "Theory 3"
 
     Scenario: Assumptions page should contain all assumptions in the database
         Given the following assumptions exist:
@@ -23,8 +25,11 @@ Feature: Entities page should contain all the entities of the same type in the d
 
         When assumptions page is visited
         Then I should see "Assumption 1"
+        And I should see link to assumptions named "Assumption 1"
         And I should see "Assumption 2"
+        And I should see link to assumptions named "Assumption 2"
         And I should see "Assumption 3"
+        And I should see link to assumptions named "Assumption 3"
 
     Scenario: Practices page should contain all practices in the database
         Given the following practices exist:
@@ -35,5 +40,8 @@ Feature: Entities page should contain all the entities of the same type in the d
 
         When practices page is visited
         Then I should see "Practice 1"
+        And I should see link to practices named "Practice 1"
         And I should see "Practice 2"
+        And I should see link to practices named "Practice 2"
         And I should see "Practice 3"
+        And I should see link to practices named "Practice 3"
