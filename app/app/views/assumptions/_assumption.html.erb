@@ -6,6 +6,7 @@
   <p>
     <strong>Description:</strong>
     <%= assumption.description %>
+    <%= "No description provided" if assumption.description.empty? %>
   </p>
 
   <% assumption.theories.each do |theory| %>
