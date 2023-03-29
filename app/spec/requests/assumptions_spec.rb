@@ -13,7 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/assumptions", type: :request do
-  
+
   # This should return the minimal set of attributes required to create a valid
   # Assumption. As you add validations to Assumption, be sure to
   # adjust the attributes here as well.
@@ -44,6 +44,8 @@ RSpec.describe "/assumptions", type: :request do
   describe "GET /new" do
     it "renders a successful response" do
       get new_assumption_url
+      
+      puts response.status
       expect(response).to be_successful
     end
   end

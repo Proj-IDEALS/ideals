@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "assumptions/new", type: :view do
+  before { sign_in_as_test_user }
   before(:each) do
     assign(:assumption, Assumption.new(
       name: "MyString",
