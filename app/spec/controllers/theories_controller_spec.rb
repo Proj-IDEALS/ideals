@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TheoriesController, type: :controller do
-
+  before { sign_in_as_test_user }
     describe "creates" do
         it "theory with valid parameters" do 
             get :create, params: {:theory => {:name => "Theory 1", 

@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe AssumptionsController, type: :controller do
-
+  before { sign_in_as_test_user }
     describe "creates" do
+      
         it "assumption with valid parameters" do 
             get :create, params: {:assumption => {:name => "Assumption 1", 
                         :description => "Description for Assumption 1"} }
