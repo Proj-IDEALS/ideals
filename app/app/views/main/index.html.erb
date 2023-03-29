@@ -19,3 +19,6 @@
     <em><%= link_to "I want to look at practices", practices_path %></em>
   </p>
 </div>
+
+  <%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false } %>
+  <%= button_to 'Logout', 'auth/logout', method: :get, data: { turbo: false } %>
