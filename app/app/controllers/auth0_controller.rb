@@ -7,10 +7,13 @@ class Auth0Controller < ApplicationController
     # Refer to https://github.com/auth0/omniauth-auth0/blob/master/EXAMPLES.md#example-of-the-resulting-authentication-hash 
     # for complete information on 'omniauth.auth' contents.
     auth_info = request.env['omniauth.auth']
+    session[:provider] = auth_info['provider']
+    session[:uid] = auth_info['uid']
+    session[:info] = auth_info['info']
     session[:userinfo] = auth_info['extra']['raw_info']
 
     # Redirect to the URL you want after successful auth
-    redirect_to '/newobjects'
+    redirect_to '/'
   end
 
   def failure

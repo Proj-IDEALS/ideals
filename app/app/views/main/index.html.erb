@@ -2,6 +2,12 @@
 
 <h1>IDEAList</h1>
 
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
 <div id="theories">
   <p>
     <em><%= link_to "I want to look at theories", theories_path %></em>
@@ -19,3 +25,9 @@
     <em><%= link_to "I want to look at practices", practices_path %></em>
   </p>
 </div>
+<% if session[:userinfo].present? %>
+<%= button_to 'Logout', 'auth/logout', method: :get, data: { turbo: false } %>
+<% else %>
+<%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false } %>
+<% end %>
+

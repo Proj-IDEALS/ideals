@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PracticesController, type: :controller do
-
+  before { sign_in_as_test_user }
     describe "creates" do
         it "practice with valid parameters" do 
             get :create, params: {:practice => {:name => "Practice 1", 

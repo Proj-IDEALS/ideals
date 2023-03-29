@@ -13,7 +13,9 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/practices", type: :request do
-  
+  before(:each) do
+    set_session_user
+  end
   # This should return the minimal set of attributes required to create a valid
   # Practice. As you add validations to Practice, be sure to
   # adjust the attributes here as well.
