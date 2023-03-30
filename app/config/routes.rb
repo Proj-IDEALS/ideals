@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   get '/auth/failure' => 'auth0#failure'
   get '/auth/logout' => 'auth0#logout'
 
+  #Concept Map
+  get '/map' => 'map#index'
+  get '/api/v1/map' => 'map#all'
+
 end
