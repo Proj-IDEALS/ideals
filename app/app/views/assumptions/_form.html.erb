@@ -16,26 +16,34 @@
     <%= form.text_field :name %>
   </div>
 
+<br>
+
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
 
+<br>
+
 <div class="field">
   <%= form.label :theory_ids, "Select Theory" %> <br>
   <% Theory.all.each do |theory| %>
     <%= check_box_tag "assumption[theory_ids][]", theory.id, @assumption.theories.include?(theory), id: "theory_#{theory.id}" %>
-    <%= label_tag "theory_#{theory.id}", theory.name, for: "theory_#{theory.id}" %>
+    <%= label_tag "theory_#{theory.id}", theory.name, for: "theory_#{theory.id}" %> <br>
   <% end %>
 </div>
+
+<br>
 
 <div class="field">
   <%= form.label :practice_ids, "Select Practice" %> <br>
   <% Practice.all.each do |practice| %>
     <%= check_box_tag "assumption[practice_ids][]", practice.id, @assumption.practices.include?(practice), id: "practice_#{practice.id}" %>
-    <%= label_tag "practice_#{practice.id}", practice.name, for: "practice_#{practice.id}" %>
+    <%= label_tag "practice_#{practice.id}", practice.name, for: "practice_#{practice.id}" %> <br>
   <% end %>
 </div>
+
+<br>
 
   <div>
     <%= form.submit %>
