@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "assumptions/edit", type: :view do
+  before { sign_in_as_test_user }
   let(:assumption) {
     Assumption.create!(
       name: "MyString",

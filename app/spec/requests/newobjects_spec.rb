@@ -12,12 +12,9 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/practices", type: :request do
-  before(:each) do
-    set_session_user
-  end
+RSpec.describe "/newobjects", type: :request do
   # This should return the minimal set of attributes required to create a valid
-  # Practice. As you add validations to Practice, be sure to
+  # Newobject. As you add validations to Newobject, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -29,59 +26,59 @@ RSpec.describe "/practices", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Practice.create! valid_attributes
-      get practices_url
+      Newobject.create! valid_attributes
+      get newobjects_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      practice = Practice.create! valid_attributes
-      get practice_url(practice)
+      newobject = Newobject.create! valid_attributes
+      get newobject_url(newobject)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_practice_url
+      get new_newobject_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      practice = Practice.create! valid_attributes
-      get edit_practice_url(practice)
+      newobject = Newobject.create! valid_attributes
+      get edit_newobject_url(newobject)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Practice" do
+      it "creates a new Newobject" do
         expect {
-          post practices_url, params: { practice: valid_attributes }
-        }.to change(Practice, :count).by(1)
+          post newobjects_url, params: { newobject: valid_attributes }
+        }.to change(Newobject, :count).by(1)
       end
 
-      it "redirects to the created practice" do
-        post practices_url, params: { practice: valid_attributes }
-        expect(response).to redirect_to(practice_url(Practice.last))
+      it "redirects to the created newobject" do
+        post newobjects_url, params: { newobject: valid_attributes }
+        expect(response).to redirect_to(newobject_url(Newobject.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new Practice" do
+      it "does not create a new Newobject" do
         expect {
-          post practices_url, params: { practice: invalid_attributes }
-        }.to change(Practice, :count).by(0)
+          post newobjects_url, params: { newobject: invalid_attributes }
+        }.to change(Newobject, :count).by(0)
       end
 
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post practices_url, params: { practice: invalid_attributes }
+        post newobjects_url, params: { newobject: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -94,26 +91,26 @@ RSpec.describe "/practices", type: :request do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested practice" do
-        practice = Practice.create! valid_attributes
-        patch practice_url(practice), params: { practice: new_attributes }
-        practice.reload
+      it "updates the requested newobject" do
+        newobject = Newobject.create! valid_attributes
+        patch newobject_url(newobject), params: { newobject: new_attributes }
+        newobject.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the practice" do
-        practice = Practice.create! valid_attributes
-        patch practice_url(practice), params: { practice: new_attributes }
-        practice.reload
-        expect(response).to redirect_to(practice_url(practice))
+      it "redirects to the newobject" do
+        newobject = Newobject.create! valid_attributes
+        patch newobject_url(newobject), params: { newobject: new_attributes }
+        newobject.reload
+        expect(response).to redirect_to(newobject_url(newobject))
       end
     end
 
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
-        practice = Practice.create! valid_attributes
-        patch practice_url(practice), params: { practice: invalid_attributes }
+        newobject = Newobject.create! valid_attributes
+        patch newobject_url(newobject), params: { newobject: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
@@ -121,17 +118,17 @@ RSpec.describe "/practices", type: :request do
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested practice" do
-      practice = Practice.create! valid_attributes
+    it "destroys the requested newobject" do
+      newobject = Newobject.create! valid_attributes
       expect {
-        delete practice_url(practice)
-      }.to change(Practice, :count).by(-1)
+        delete newobject_url(newobject)
+      }.to change(Newobject, :count).by(-1)
     end
 
-    it "redirects to the practices list" do
-      practice = Practice.create! valid_attributes
-      delete practice_url(practice)
-      expect(response).to redirect_to(practices_url)
+    it "redirects to the newobjects list" do
+      newobject = Newobject.create! valid_attributes
+      delete newobject_url(newobject)
+      expect(response).to redirect_to(newobjects_url)
     end
   end
 end

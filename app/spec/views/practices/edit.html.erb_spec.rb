@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "practices/edit", type: :view do
+  before { sign_in_as_test_user }
   let(:practice) {
     Practice.create!(
       name: "MyString",

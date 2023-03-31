@@ -1,6 +1,7 @@
 class PracticesController < ApplicationController
   before_action :set_practice, only: %i[ show edit update destroy ]
-
+  before_action :require_login
+  skip_before_action :require_login, only: [:index, :show]
   # GET /practices or /practices.json
   def index
     @practices = Practice.all

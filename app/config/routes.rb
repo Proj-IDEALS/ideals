@@ -13,5 +13,12 @@ Rails.application.routes.draw do
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
   get '/auth/logout' => 'auth0#logout'
+  get '/user/info' =>  'user#show'
+  if Rails.env.test?
+    namespace :test do
+      resource :session, only: %i[create]
+    end
+  end
+
 
 end

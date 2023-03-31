@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "practices/new", type: :view do
+  before { sign_in_as_test_user }
   before(:each) do
     assign(:practice, Practice.new(
       name: "MyString",
