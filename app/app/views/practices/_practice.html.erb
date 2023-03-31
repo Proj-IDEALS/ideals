@@ -6,6 +6,7 @@
   <p>
     <strong>Description:</strong>
     <%= practice.description %>
+    <%= "No description provided" if practice.description.empty? %>
   </p>
 
   <% practice.assumptions.each do |assump| %>
