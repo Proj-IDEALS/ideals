@@ -16,18 +16,24 @@
     <%= form.text_field :name %>
   </div>
 
+<br>
+
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
 
+<br>
+
   <div class="field">
   <%= form.label :assumption_ids, "Select Assumptions" %><br>
   <% Assumption.all.each do |assumption| %>
     <%= check_box_tag "theory[assumption_ids][]", assumption.id, @theory.assumptions.include?(assumption), id: "assumption_#{assumption.id}" %>
-    <%= label_tag "assumption_#{assumption.id}", assumption.name, for: "assumption_#{assumption.id}" %>
+    <%= label_tag "assumption_#{assumption.id}", assumption.name, for: "assumption_#{assumption.id}" %> <br>
   <% end %>
   </div>
+
+<br>
 
   <div>
     <%= form.submit %>
