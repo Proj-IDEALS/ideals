@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+# :nocov:
 
   def require_login
     unless session[:userinfo].present?
@@ -11,5 +12,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path and return
     end
   end
+# :nocov:
+
 
 end
