@@ -13,3 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+import "trix"
+import "@rails/actiontext"

@@ -1,3 +1,5 @@
+<%= javascript_pack_tag "application" %>
+<%= stylesheet_pack_tag "application" %>
 <%= form_with(model: theory) do |form| %>
   <% if theory.errors.any? %>
     <div style="color: red">
@@ -20,7 +22,7 @@
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.rich_text_area :description %>
   </div>
 
 <br>
