@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends nodejs yarn
 
 # Default directory
 ENV INSTALL_PATH /opt/app
+ENV RAILS_ENV production
+
 RUN mkdir -p $INSTALL_PATH
 
 # Install gems
@@ -17,7 +19,6 @@ RUN rm -rf node_modules vendor
 RUN gem install rails bundler
 RUN bundle update rack-protection
 RUN bundle install
-RUN yarn install
 
 # Start server
 CMD bundle exec unicorn -c config/unicorn.rb

@@ -354,7 +354,7 @@
   },
   "Cucumber Features": {
     "coverage": {
-      "/home/sid/projects/ideals/app/app/models/theory.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/models/theory.rb": {
         "lines": [
           1,
           1,
@@ -363,14 +363,14 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/models/application_record.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/models/assumption.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/models/assumption.rb": {
         "lines": [
           1,
           1,
@@ -379,7 +379,7 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/models/practice.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/models/practice.rb": {
         "lines": [
           1,
           1,
@@ -387,7 +387,7 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/controllers/assumptions_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/assumptions_controller.rb": {
         "lines": [
           1,
           1,
@@ -472,7 +472,7 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/controllers/application_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -491,37 +491,37 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/helpers/application_helper.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/helpers/assumptions_helper.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/helpers/assumptions_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/helpers/newobjects_helper.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/helpers/newobjects_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/helpers/practices_helper.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/helpers/practices_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/helpers/theories_helper.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/helpers/theories_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/controllers/theories_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/theories_controller.rb": {
         "lines": [
           1,
           1,
@@ -602,7 +602,7 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/controllers/practices_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/practices_controller.rb": {
         "lines": [
           1,
           1,
@@ -677,7 +677,7 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/controllers/main_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/main_controller.rb": {
         "lines": [
           1,
           1,
@@ -769,13 +769,13 @@
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/models/newobject.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/models/newobject.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/sid/projects/ideals/app/app/controllers/auth0_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/auth0_controller.rb": {
         "lines": [
           0,
           0,
@@ -825,7 +825,7 @@
         "branches": {
         }
       },
-      "/home/sid/projects/ideals/app/app/controllers/concerns/secured.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/concerns/secured.rb": {
         "lines": [
           0,
           0,
@@ -843,7 +843,7 @@
         "branches": {
         }
       },
-      "/home/sid/projects/ideals/app/app/controllers/user_controller.rb": {
+      "/Users/isurangaperera/RubymineProjects/ideals/app/app/controllers/user_controller.rb": {
         "lines": [
           null,
           0,
@@ -863,6 +863,6 @@
         }
       }
     },
-    "timestamp": 1680284047
+    "timestamp": 1680316096
   }
 }
