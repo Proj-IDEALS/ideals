@@ -38,5 +38,6 @@
 
 app/tmp
 app/log
+app/coverage
 
 app/node_modules/
