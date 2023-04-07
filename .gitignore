@@ -41,3 +41,5 @@ app/log
 app/coverage
 
 app/node_modules/
+app/public
+app/db/development.sqlite3
