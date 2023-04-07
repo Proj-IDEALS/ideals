@@ -34,4 +34,4 @@ bundle install
 bundle exec rails server -b 0.0.0.0
 ```
 > Note: `export NODE_OPTIONS=--openssl-legacy-provider` is required if the webpack fails with code: 'ERR_OSSL_EVP_UNSUPPORTED'.
-
+> If image loading is not working, install libvps library in your system
