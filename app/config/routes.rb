@@ -20,5 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  #Concept Map
+  get '/map' => 'map#index'
+  get '/api/v1/map' => 'map#all'
 
 end

@@ -39,5 +39,5 @@
 app/tmp
 app/log
 app/coverage
-
+app/coveragejs
 app/node_modules/
