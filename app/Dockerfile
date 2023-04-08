@@ -20,5 +20,7 @@ RUN gem install rails bundler
 RUN bundle update rack-protection
 RUN bundle install
 
+RUN yarn install
+
 # Start server
 CMD bundle exec unicorn -c config/unicorn.rb
