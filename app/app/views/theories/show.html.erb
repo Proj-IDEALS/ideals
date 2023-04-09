@@ -8,3 +8,11 @@
 
   <%= button_to "Destroy this theory", @theory, method: :delete %>
 </div>
+
+<script>
+    const theory = <%= @theory.to_json.html_safe %>;
+    document.addEventListener('DOMContentLoaded', () => {
+        const label = 'theories' + theory.id;
+        window.parent.initGraph(true, label);
+    });
+</script>

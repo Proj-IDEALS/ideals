@@ -100,51 +100,53 @@ const graph = new G6.Graph({
     }
 });
 
-fetch("api/v1/map")
-    .then((response) => response.json())
-    .then(data => {
-        let graphData = {nodes: [], edges: []};
-        const colors = {assumptions: 'red', theories: 'blue', practices: 'green'};
-        ['assumptions', 'theories', 'practices'].forEach((label, i) => {
-            data[label].forEach((node) => {
-                graphData.nodes.push({
-                    id: (label + node.id.toString()).toString(),
-                    label: node.name,
-                    style: {
-                        lineWidth: 2,
-                        stroke: colors[label],
-                    },
-                    preRect: {
-                        fill: colors[label],
-                    }
+function initGraph(fade=false, label) {
+    fetch("api/v1/map")
+        .then((response) => response.json())
+        .then(data => {
+            let graphData = {nodes: [], edges: []};
+            const colors = {assumptions: 'red', theories: 'blue', practices: 'green'};
+            ['assumptions', 'theories', 'practices'].forEach((label, i) => {
+                data[label].forEach((node) => {
+                    graphData.nodes.push({
+                        id: (label + node.id.toString()).toString(),
+                        label: node.name,
+                        style: {
+                            lineWidth: 2,
+                            stroke: colors[label],
+                        },
+                        preRect: {
+                            fill: colors[label],
+                        }
+                    })
+                });
+            });
+
+            data['assumptions_practices'].forEach((edge) => {
+                graphData.edges.push({
+                    source: ('assumptions' + edge['assumption_id'].toString()).toString(),
+                    target: ('practices' + edge['practice_id'].toString()).toString()
                 })
             });
-        });
 
-        data['assumptions_practices'].forEach((edge) => {
-            graphData.edges.push({
-                source: ('assumptions' + edge['assumption_id'].toString()).toString(),
-                target: ('practices' + edge['practice_id'].toString()).toString()
-            })
-        });
+            data['assumptions_theories'].forEach((edge) => {
+                graphData.edges.push({
+                    source: ('assumptions' + edge['assumption_id'].toString()).toString(),
+                    target: ('theories' + edge['theory_id'].toString()).toString()
+                })
+            });
 
-        data['assumptions_theories'].forEach((edge) => {
-            graphData.edges.push({
-                source: ('assumptions' + edge['assumption_id'].toString()).toString(),
-                target: ('theories' + edge['theory_id'].toString()).toString()
-            })
-        });
+            graphData.nodes.forEach(function (node) {
+                node.label = wrapText(node.label, 80);
+            });
+            graph.data(graphData);
+            graph.render();
 
-        graphData.nodes.forEach(function (node) {
-            node.label = wrapText(node.label, 80);
+            if(fade) {
+                fadeOutUnconnected(label)
+            }
         });
-        console.log(graphData);
-        graph.data(graphData);
-        graph.render();
-
-        //fadeOutUnconnected('assumptions9');
-        //resetGraph();
-    });
+}
 
 
 graph.on('node:mouseenter', (evt) => {
@@ -199,5 +201,8 @@ function fadeOutUnconnected(nodeId) {
     graph.refreshPositions();
 }
 
+initGraph(false, 0);
+
 window.fadeOutUnconnected = fadeOutUnconnected;
 window.resetGraph = resetGraph;
+window.initGraph = initGraph;
