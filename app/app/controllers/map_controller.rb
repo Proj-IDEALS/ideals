@@ -1,4 +1,3 @@
-# :nocov:
 class MapController < ApplicationController
   # GET /map
   def index
