@@ -1,4 +1,4 @@
-# IDEALS [:anger:](https://idealmaps.xyz)
+# IDEALS
 
 ## _Highly-interactive concept map of relationships between learning theories_
 
@@ -35,3 +35,16 @@ bundle exec rails server -b 0.0.0.0
 ```
 > Note: `export NODE_OPTIONS=--openssl-legacy-provider` is required if the webpack fails with code: 'ERR_OSSL_EVP_UNSUPPORTED'.
 > If image loading is not working, install libvps library in your system
+
+##### JavaScript Tests
+Make sure you have following libraries installed if you are running JS tests
+
+###### Mac
+```sh
+brew install pkg-config cairo pango libpng jpeg giflib librsvg
+```
+
+###### Ubuntu
+```sh
+sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+```

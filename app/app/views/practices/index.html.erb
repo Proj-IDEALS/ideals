@@ -6,11 +6,22 @@
   <% @practices.each do |practice| %>
     <p>
       <strong><%= practice.name %></strong>
-      <em><%= link_to "show this practice", practice %></em>
+      <em><%= link_to "show this practice", practice, :onclick => "callPractice(#{practice.id})"  %></em>
     </p>
   <% end %>
 </div>
 
 <p><%= link_to "New practice", new_practice_path %></p>
 
-<p><%= link_to "Back to home", root_path %></p>
+<p><%= link_to "Back to home", root_path, :onclick => 'resetGraph()'  %></p>
+
+<script>
+    function callPractice(practiceId) {
+        const label = 'practices' + practiceId;
+        window.parent.fadeOutUnconnected(label);
+    }
+
+    function resetGraph() {
+        window.parent.resetGraph();
+    }
+</script>

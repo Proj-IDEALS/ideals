@@ -6,11 +6,22 @@
   <% @assumptions.each do |assumption| %>
     <p>
       <strong><%= assumption.name %></strong>
-      <em><%= link_to "show this assumption", assumption %></em>
+      <em><%= link_to "show this assumption", assumption, :onclick => "callAssumption(#{assumption.id})"  %></em>
     </p>
   <% end %>
 </div>
 
 <p><%= link_to "New assumption", new_assumption_path %></p>
 
-<p><%= link_to "Back to home", root_path %></p>
+<p><%= link_to "Back to home", root_path, :onclick => 'resetGraph()'  %></p>
+
+<script>
+    function callAssumption(assumptionId) {
+        const label = 'assumptions' + assumptionId;
+        window.parent.fadeOutUnconnected(label);
+    }
+
+    function resetGraph() {
+        window.parent.resetGraph();
+    }
+</script>

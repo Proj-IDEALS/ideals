@@ -8,3 +8,11 @@
 
   <%= button_to "Destroy this practice", @practice, method: :delete %>
 </div>
+
+<script>
+    const practice = <%= @practice.to_json.html_safe %>;
+    document.addEventListener('DOMContentLoaded', () => {
+        const label = 'practices' + practice.id;
+        window.parent.initGraph(true, label);
+    });
+</script>

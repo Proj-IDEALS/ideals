@@ -8,3 +8,11 @@
 
   <%= button_to "Destroy this assumption", @assumption, method: :delete %>
 </div>
+
+<script>
+    const assumption = <%= @assumption.to_json.html_safe %>;
+    document.addEventListener('DOMContentLoaded', () => {
+        const label = 'assumptions' + assumption.id;
+        window.parent.initGraph(true, label);
+    });
+</script>
