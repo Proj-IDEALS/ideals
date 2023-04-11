@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MainController < ApplicationController
-  before_action :set_newobject, only: %i[ show edit update destroy ]
+  before_action :set_newobject, only: %i[show edit update destroy]
   # before_action :require_login
   # skip_before_action :require_login, only: [:index, :show]
 
@@ -9,8 +11,7 @@ class MainController < ApplicationController
   end
 
   # GET /newobjects/1 or /newobjects/1.json
-  def show
-  end
+  def show; end
 
   # GET /newobjects/new
   def new
@@ -18,8 +19,7 @@ class MainController < ApplicationController
   end
 
   # GET /newobjects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /newobjects or /newobjects.json
   def create
@@ -32,18 +32,18 @@ class MainController < ApplicationController
         when 'assumption'
           assumption = Assumption.new(name: @newobject.Name, description: @newobject.Details)
           assumption.save
-          #@newobject.assumption = assumption
+          # @newobject.assumption = assumption
         when 'theory'
           theory = Theory.new(name: @newobject.Name, description: @newobject.Details)
           theory.save
-          #@newobject.theory = theory
+          # @newobject.theory = theory
         when 'practice'
           practice = Practice.new(name: @newobject.Name, description: @newobject.Details)
           practice.save
-          #@newobject.practice = practice
+          # @newobject.practice = practice
         end
 
-        format.html { redirect_to newobject_url(@newobject), notice: "New Object was successfully created." }
+        format.html { redirect_to newobject_url(@newobject), notice: 'New Object was successfully created.' }
         format.json { render :show, status: :created, location: @newobject }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class MainController < ApplicationController
   def update
     respond_to do |format|
       if @newobject.update(newobject_params)
-        format.html { redirect_to newobject_url(@newobject), notice: "New object was successfully updated." }
+        format.html { redirect_to newobject_url(@newobject), notice: 'New object was successfully updated.' }
         format.json { render :show, status: :ok, location: @newobject }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,19 +70,20 @@ class MainController < ApplicationController
     @newobject.destroy
 
     respond_to do |format|
-      format.html { redirect_to newobjects_url, notice: "Newobject was successfully destroyed." }
+      format.html { redirect_to newobjects_url, notice: 'Newobject was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_newobject
-      @newobject = Newobject.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def newobject_params
-      params.require(:newobject).permit(:Name, :Category, :Details, :Linkto)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_newobject
+    @newobject = Newobject.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def newobject_params
+    params.require(:newobject).permit(:Name, :Category, :Details, :Linkto)
+  end
 end

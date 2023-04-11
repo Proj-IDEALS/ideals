@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 worker_processes ENV['WORKER_PROCESSES'].to_i
 listen ENV['LISTEN_ON']
 timeout 30
@@ -19,6 +21,6 @@ before_fork do |server, worker|
   end
 end
 
-after_fork do |server, worker|
+after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end

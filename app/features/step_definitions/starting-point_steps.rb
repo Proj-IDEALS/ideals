@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 When('I click on a link containing the word {word}') do |obj_type|
-    click_link :text => /^.*#{obj_type}.*$/i
+  click_link text: /^.*#{obj_type}.*$/i
 end
 
 Then('I should see {word} list page') do |obj_type|
-    expect(page).to have_current_path(send("#{obj_type}_path"))
+  expect(page).to have_current_path(send("#{obj_type}_path"))
 end

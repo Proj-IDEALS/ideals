@@ -1,22 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "theories/new", type: :view do
+RSpec.describe 'theories/new', type: :view do
   before { sign_in_as_test_user }
   before(:each) do
     assign(:theory, Theory.new(
-      name: "MyString",
-      description: "MyString"
-    ))
+                      name: 'MyString',
+                      description: 'MyString'
+                    ))
   end
 
-  it "renders new theory form" do
+  it 'renders new theory form' do
     render
 
-    assert_select "form[action=?][method=?]", theories_path, "post" do
+    assert_select 'form[action=?][method=?]', theories_path, 'post' do
+      assert_select 'input[name=?]', 'theory[name]'
 
-      assert_select "input[name=?]", "theory[name]"
-
-      assert_select "input[name=?]", "theory[description]"
+      assert_select 'input[name=?]', 'theory[description]'
     end
   end
 end

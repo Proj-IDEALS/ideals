@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe MapController, type: :controller do
@@ -8,8 +10,8 @@ RSpec.describe MapController, type: :controller do
     end
   end
 
-  describe "GET #all" do
-    it "returns a JSON object containing nodes" do
+  describe 'GET #all' do
+    it 'returns a JSON object containing nodes' do
       # Create records for main models
       assumptions = create_list(:assumption, 3)
       theories = create_list(:theory, 2)

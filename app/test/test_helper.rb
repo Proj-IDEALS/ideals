@@ -1,15 +1,19 @@
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
-require "rails/test_help"
+# frozen_string_literal: true
 
-class ActiveSupport::TestCase
-  parallelize(workers: :number_of_processors)
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
+require 'rails/test_help'
 
-  fixtures :all
+module ActiveSupport
+  class TestCase
+    parallelize(workers: :number_of_processors)
 
-  unless Webpacker.compiler.fresh?
-    puts "== Webpack compiling =="
-    Webpacker.compiler.compile
-    puts "== Webpack compiled =="
+    fixtures :all
+
+    unless Webpacker.compiler.fresh?
+      puts '== Webpack compiling =='
+      Webpacker.compiler.compile
+      puts '== Webpack compiled =='
+    end
   end
 end

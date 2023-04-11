@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "theories/index", type: :view do
+RSpec.describe 'theories/index', type: :view do
   before(:each) do
     assign(:theories, [
-      Theory.create!(
-        name: "Name",
-        description: "Description"
-      ),
-      Theory.create!(
-        name: "Name",
-        description: "Description"
-      )
-    ])
+             Theory.create!(
+               name: 'Name',
+               description: 'Description'
+             ),
+             Theory.create!(
+               name: 'Name',
+               description: 'Description'
+             )
+           ])
   end
 
   # it "renders a list of theories" do

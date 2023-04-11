@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,7 +12,7 @@ module App
   class Application < Rails::Application
     config.load_defaults 7.0
     config.log_level = :debug
-    config.log_tags  = [:subdomain, :uuid]
+    config.log_tags  = %i[subdomain uuid]
     config.assets.paths << Rails.root.join('node_modules')
   end
 end

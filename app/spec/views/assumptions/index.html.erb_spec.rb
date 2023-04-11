@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "assumptions/index", type: :view do
+RSpec.describe 'assumptions/index', type: :view do
   before(:each) do
     assign(:assumptions, [
-      Assumption.create!(
-        name: "Name",
-        description: "Description"
-      ),
-      Assumption.create!(
-        name: "Name",
-        description: "Description"
-      )
-    ])
+             Assumption.create!(
+               name: 'Name',
+               description: 'Description'
+             ),
+             Assumption.create!(
+               name: 'Name',
+               description: 'Description'
+             )
+           ])
   end
 
   # it "renders a list of assumptions" do

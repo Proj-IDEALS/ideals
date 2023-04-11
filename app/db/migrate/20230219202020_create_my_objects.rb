@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateMyObjects < ActiveRecord::Migration[7.0]
   def change
     create_table :theories do |t|

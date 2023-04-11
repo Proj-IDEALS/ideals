@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PracticesController < ApplicationController
-  before_action :set_practice, only: %i[ show edit update destroy ]
+  before_action :set_practice, only: %i[show edit update destroy]
   # before_action :require_login
   # skip_before_action :require_login, only: [:index, :show]
   # GET /practices or /practices.json
@@ -8,8 +10,7 @@ class PracticesController < ApplicationController
   end
 
   # GET /practices/1 or /practices/1.json
-  def show
-  end
+  def show; end
 
   # GET /practices/new
   def new
@@ -17,8 +18,7 @@ class PracticesController < ApplicationController
   end
 
   # GET /practices/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /practices or /practices.json
   def create
@@ -26,7 +26,7 @@ class PracticesController < ApplicationController
 
     respond_to do |format|
       if @practice.save
-        format.html { redirect_to practice_url(@practice), notice: "Practice was successfully created." }
+        format.html { redirect_to practice_url(@practice), notice: 'Practice was successfully created.' }
         format.json { render :show, status: :created, location: @practice }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class PracticesController < ApplicationController
   def update
     respond_to do |format|
       if @practice.update(practice_params)
-        format.html { redirect_to practice_url(@practice), notice: "Practice was successfully updated." }
+        format.html { redirect_to practice_url(@practice), notice: 'Practice was successfully updated.' }
         format.json { render :show, status: :ok, location: @practice }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,19 +53,20 @@ class PracticesController < ApplicationController
     @practice.destroy
 
     respond_to do |format|
-      format.html { redirect_to practices_url, notice: "Practice was successfully destroyed." }
+      format.html { redirect_to practices_url, notice: 'Practice was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_practice
-      @practice = Practice.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def practice_params
-      params.require(:practice).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_practice
+    @practice = Practice.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def practice_params
+    params.require(:practice).permit(:name, :description)
+  end
 end

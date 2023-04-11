@@ -1,12 +1,20 @@
+# frozen_string_literal: true
+
 # features/step_definitions/map_view_steps.rb
 
 Given(/^I have created assumptions, theories, practices and their associations$/) do
-  @assumptions = Array.new(3) { Assumption.create(name: "Assumption #{rand(1000)}",
-                                                  description: "A sample assumption description.") }
-  @theories = Array.new(2) { Theory.create(name: "Theory #{rand(1000)}",
-                                           description: "A sample theory description.") }
-  @practices = Array.new(4) { Practice.create(name: "Practice #{rand(1000)}",
-                                              description: "A sample practice description.") }
+  @assumptions = Array.new(3) do
+    Assumption.create(name: "Assumption #{rand(1000)}",
+                      description: 'A sample assumption description.')
+  end
+  @theories = Array.new(2) do
+    Theory.create(name: "Theory #{rand(1000)}",
+                  description: 'A sample theory description.')
+  end
+  @practices = Array.new(4) do
+    Practice.create(name: "Practice #{rand(1000)}",
+                    description: 'A sample practice description.')
+  end
 
   @assumptions[0].theories << @theories[0]
   @assumptions[0].practices << @practices[0]

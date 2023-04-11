@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Auth0Controller < ApplicationController
   def callback
     # OmniAuth stores the informatin returned from
     # Auth0 and the IdP in request.env['omniauth.auth'].
-    # In this code, you will pull the raw_info supplied 
+    # In this code, you will pull the raw_info supplied
     # from the id_token and assign it to the session.
-    # Refer to https://github.com/auth0/omniauth-auth0/blob/master/EXAMPLES.md#example-of-the-resulting-authentication-hash 
+    # Refer to https://github.com/auth0/omniauth-auth0/blob/master/EXAMPLES.md#example-of-the-resulting-authentication-hash
     # for complete information on 'omniauth.auth' contents.
     auth_info = request.env['omniauth.auth']
     session[:provider] = auth_info['provider']
@@ -27,11 +29,12 @@ class Auth0Controller < ApplicationController
   end
 
   private
+
   AUTH0_CONFIG = Rails.application.config_for(:auth0)
 
   def logout_url
     request_params = {
-      returnTo: "https://idealmaps.xyz",
+      returnTo: 'https://idealmaps.xyz',
       client_id: AUTH0_CONFIG['auth0_client_id']
     }
 
