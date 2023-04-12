@@ -15,8 +15,9 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+console.log('Hello World from Webpacker')
 //require("trix/dist/trix");
 //require("./actiontext.scss");
 require("trix/dist/trix");
 require("trix")
-require("@rails/actiontext")
+require("@rails/actiontext");
