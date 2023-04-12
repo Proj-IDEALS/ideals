@@ -3,10 +3,12 @@
 <%= render @practice %>
 
 <div>
-  <%= link_to "Edit this practice", edit_practice_path(@practice) %> |
-  <%= link_to "Back to practices", practices_path %>
 
+  <%= link_to "Back to practices", practices_path %>
+  <% if session[:userinfo].present? %>
+  | <%= link_to "Edit this practice", edit_practice_path(@practice) %> 
   <%= button_to "Destroy this practice", @practice, method: :delete %>
+  <% end %>
 </div>
 
 <script>
