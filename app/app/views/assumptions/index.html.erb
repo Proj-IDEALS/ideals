@@ -10,8 +10,10 @@
     </p>
   <% end %>
 </div>
-
+<% if session[:userinfo].present? %>
 <p><%= link_to "New assumption", new_assumption_path %></p>
+<% end %>
+
 
 <p><%= link_to "Back to home", root_path, :onclick => 'resetGraph()'  %></p>
 

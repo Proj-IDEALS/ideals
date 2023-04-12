@@ -3,8 +3,10 @@
 <%= render @newobject %>
 
 <div>
-  <%= link_to "Edit this New Object", edit_newobject_path(@newobject) %> |
+  
   <%= link_to "Back to New Objects", newobjects_path %>
-
+  <% if session[:userinfo].present? %>
+  |<%= link_to "Edit this New Object", edit_newobject_path(@newobject) %> 
   <%= button_to "Destroy this New Object", @newobject, method: :delete %>
+  <% end %>
 </div>

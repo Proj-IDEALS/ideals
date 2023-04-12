@@ -3,10 +3,12 @@
 <%= render @assumption %>
 
 <div>
-  <%= link_to "Edit this assumption", edit_assumption_path(@assumption) %> |
+  
   <%= link_to "Back to assumptions", assumptions_path %>
-
+  <% if session[:userinfo].present? %>
+  | <%= link_to "Edit this assumption", edit_assumption_path(@assumption) %> 
   <%= button_to "Destroy this assumption", @assumption, method: :delete %>
+  <% end %>
 </div>
 
 <script>

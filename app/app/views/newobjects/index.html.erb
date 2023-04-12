@@ -7,8 +7,12 @@
 
 
 <h1>List of Objects</h1>
-
+<% if session[:userinfo].present? %>
 <%= link_to "Create New Object", new_newobject_path %>
+<% else %>
+
+<% end %>
+
 
 
 
