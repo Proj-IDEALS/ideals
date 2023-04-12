@@ -2,7 +2,7 @@
 
 class AssumptionsController < ApplicationController
   before_action :set_assumption, only: %i[show edit update destroy]
-  # before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
   # GET /assumptions or /assumptions.json
   def index
     @assumptions = Assumption.all
