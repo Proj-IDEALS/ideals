@@ -36,7 +36,9 @@ RSpec.describe PracticesController, type: :controller do
       practice = Practice.create(name: 'Practice Test', description: 'Description for practice test')
       get :update, params: { id: practice.id, practice: { description: 'New Description' } }
 
-      expect(assigns(:practice).description).to eq('New Description')
+      expect(assigns(:practice).description.body.to_plain_text).to eq('New Description')
+      practice.reload
+      expect(practice.description.body.to_plain_text).to eq('New Description')
       practice.destroy
     end
   end

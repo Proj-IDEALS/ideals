@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/auth/logout' => 'auth0#logout'
   get '/user/info' => 'user#show'
   if Rails.env.test?
+    get 'test', to: 'test#index'
     namespace :test do
       resource :session, only: %i[create]
     end

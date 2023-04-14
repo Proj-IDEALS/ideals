@@ -36,7 +36,9 @@ RSpec.describe AssumptionsController, type: :controller do
       assumption = Assumption.create(name: 'Assumption Test', description: 'Description for assumption test')
       get :update, params: { id: assumption.id, assumption: { description: 'New Description' } }
 
-      expect(assigns(:assumption).description).to eq('New Description')
+      expect(assigns(:assumption).description.body.to_plain_text).to eq('New Description')
+      assumption.reload
+      expect(assumption.description.body.to_plain_text).to eq('New Description')
       assumption.destroy
     end
   end

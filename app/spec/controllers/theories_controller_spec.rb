@@ -36,7 +36,9 @@ RSpec.describe TheoriesController, type: :controller do
       theory = Theory.create(name: 'Theory Test', description: 'Description for theory test')
       get :update, params: { id: theory.id, theory: { description: 'New Description' } }
 
-      expect(assigns(:theory).description).to eq('New Description')
+      expect(assigns(:theory).description.body.to_plain_text).to eq('New Description')
+      theory.reload
+      expect(theory.description.body.to_plain_text).to eq('New Description')
       theory.destroy
     end
   end
