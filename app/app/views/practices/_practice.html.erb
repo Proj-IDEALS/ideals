@@ -1,11 +1,17 @@
 <div id="<%= dom_id practice %>">
-  <p>
-    <h2><%= practice.name %></h2>
-  </p>
+  <div class="engraved">
+    <span><%= practice.name.capitalize %></span>
+  </div>
 
   <p>
     <strong>Description:</strong>
-    <%= practice.description %>
+    <% doc = Nokogiri::HTML.fragment(practice.description.to_s) %>
+    <% doc.css('a').each do |link| %>
+      <% link.set_attribute('target', '_blank') %>
+      <% link.set_attribute('rel', 'noopener noreferrer') %>
+    <% end %>
+    <%= doc.to_html.html_safe %>
+
     <%= "No description provided" if practice.description.empty? %>
   </p>
 

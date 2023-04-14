@@ -2,6 +2,8 @@
 
 require 'rails_helper'
 
+root_path = '/init'
+
 RSpec.describe PracticesController, type: :controller do
   describe 'updates' do
     context 'when user is not logged in and try to updates an Practices' do

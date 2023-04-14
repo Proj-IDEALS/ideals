@@ -12,25 +12,28 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
 <br>
 
-  <div>
+  <div class="form-group">
     <%= form.label :description, style: "display: block" %>
     <%= form.rich_text_area :description %>
   </div>
 
 <br>
 
-  <div class="field">
+  <div class="field form-group">
   <%= form.label :assumption_ids, "Select Assumptions" %><br>
   <% Assumption.all.each do |assumption| %>
-    <%= check_box_tag "theory[assumption_ids][]", assumption.id, @theory.assumptions.include?(assumption), id: "assumption_#{assumption.id}" %>
-    <%= label_tag "assumption_#{assumption.id}", assumption.name, for: "assumption_#{assumption.id}" %> <br>
+      <div class="form-check">
+    <%= check_box_tag "theory[assumption_ids][]", assumption.id, @theory.assumptions.include?(assumption),
+                      id: "assumption_#{assumption.id}", class: 'form-check-input' %>
+    <%= label_tag "assumption_#{assumption.id}", assumption.name, for: "assumption_#{assumption.id}", class: 'form-check-label' %>
+      </div>
   <% end %>
   </div>
 

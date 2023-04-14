@@ -1,10 +1,14 @@
-<h1>Editing theory</h1>
+<div style="padding-left: 20px; padding-right: 10px">
 
-<%= render "form", theory: @theory %>
+  <div class="engraved">
+    <span>Edit theory</span>
+  </div>
+  <%= render "form", theory: @theory %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this theory", @theory %> |
-  <%= link_to "Back to theories", theories_path %>
+  <div>
+    <%= link_to "Show this theory", @theory %> |
+    <%= link_to "Back to theories", theories_path %>
+  </div>
 </div>

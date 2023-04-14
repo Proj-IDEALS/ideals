@@ -3,7 +3,7 @@
 class TheoriesController < ApplicationController
   before_action :set_theory, only: %i[show edit update destroy]
   before_action :require_login
-  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :require_login, only: %i[index show]
   # GET /theories or /theories.json
   def index
     @theories = Theory.all

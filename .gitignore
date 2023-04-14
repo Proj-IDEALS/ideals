@@ -41,3 +41,6 @@ app/log
 app/coverage
 app/coveragejs
 app/node_modules/
+app/public
+
+node_modules

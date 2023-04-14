@@ -1,0 +1,71 @@
+.engraved {
+    font-size: 25px;
+    font-family: Futura;
+    background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(245, 245, 245, 0.5) 3px 5px 1px;
+}
+
+.sub-engraved {
+    font-size: 15px;
+    font-family: Futura;
+    background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(245, 245, 245, 0.5) 3px 5px 1px;
+}
+
+.main-engraved {
+    font-size: 40px;
+    font-family: Futura;
+    background-color: #666666;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(245, 245, 245, 0.5) 3px 5px 1px;
+}
+
+.embossed {
+    color: #f0f0f0;
+    font-size: 15px;
+    font-family: Futura;
+    background-color: #666666;
+    text-shadow: 1px 4px 4px #555;
+    text-align: left;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+
+}
+
+.link {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+footer {
+    margin-top: auto;
+}
+
+span {
+    margin-bottom: 10px;
+}
+
+span {
+    font-size: 22px;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #012970;
+}
