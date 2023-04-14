@@ -5,6 +5,12 @@
 <div>
 
   <%= link_to "Back to practices", practices_path %>
+  <!-- if in the cucumber test, show the button --> 
+  <% if Rails.env.test? %>
+  | <%= link_to "Edit this practice", edit_practice_path(@practice) %> 
+  <%= button_to "Destroy this practice", @practice, method: :delete %>
+  <% end %>
+  <!-- if in the production, show the button -->
   <% if session[:userinfo].present? %>
   | <%= link_to "Edit this practice", edit_practice_path(@practice) %> 
   <%= button_to "Destroy this practice", @practice, method: :delete %>
