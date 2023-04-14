@@ -1,26 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Assumptions</h1>
+<div class="engraved" style="padding-left: 20px">
+  <span>Assumptions</span>
+</div>
 
-<div id="assumptions">
+<div class="list-group list-group-light">
   <% @assumptions.each do |assumption| %>
-    <p>
-      <strong><%= assumption.name %></strong>
-      <em><%= link_to "show this assumption", assumption, :onclick => "callAssumption(#{assumption.id})"  %></em>
-    </p>
+    <%= link_to assumption, :onclick => "callAssumption(#{assumption.id})",
+                class: "list-group-item list-group-item-action px-3 border-0 ripple link" do %>
+      <i class="bi bi-arrow-right-circle-fill"></i> <%= assumption.name.capitalize %>
+    <% end %>
   <% end %>
 </div>
+
 <!-- if in the cucumber test, show the button -->
 <% if Rails.env.test? %>
-<p><%= link_to "New assumption", new_assumption_path %></p>
+  <p><%= link_to "New assumption", new_assumption_path %></p>
 <% end %>
+
 <!-- if in the production, show the button -->
 <% if session[:userinfo].present? %>
-<p><%= link_to "New assumption", new_assumption_path %></p>
+  <p style="padding-left: 20px"><%= link_to "New assumption", new_assumption_path %></p>
 <% end %>
-
-
-<p><%= link_to "Back to home", root_path, :onclick => 'resetGraph()'  %></p>
 
 <script>
     function callAssumption(assumptionId) {

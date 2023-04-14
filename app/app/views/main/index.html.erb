@@ -1,6 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<html lang="en">
+<head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'bootstrap-icons', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'boxicons', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<h1>IDEAList</h1>
+  <title>Home</title>
+</head>
+
+<body style="background: white; height: 100vh">
+<p style="color: green"><%= notice %></p>
 
 <% if flash[:alert].present? %>
   <div class="alert alert-danger">
@@ -8,26 +19,30 @@
   </div>
 <% end %>
 
-<div id="theories">
-  <p>
-    <em><%= link_to "I want to look at theories", theories_path %></em>
-  </p>
+<div class="flex-wrapper">
+  <div class="list-group list-group-light">
+    <%= link_to theories_path, id: "theories",
+                class: "engraved list-group-item list-group-item-action px-3 border-0 ripple link" do %>
+      <span>Theories</span>
+    <% end %>
+    <%= link_to assumptions_path, id: "assumptions",
+                class: "engraved list-group-item list-group-item-action px-3 border-0 ripple link" do %>
+      <span>Assumptions</span>
+    <% end %>
+    <%= link_to practices_path, id: "apractices",
+                class: "engraved list-group-item list-group-item-action px-3 border-0 ripple link" do %>
+      <span>Practices</span>
+    <% end %>
+  </div>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright" style="padding: 20px">
+      &copy; IDEALS The utilization of this online tool is based on its central, bifold goal of providing theoretical support to
+      teaching practices and of offering practical approaches to apply learning theories.
+    </div>
+  </footer><!-- End Footer -->
 </div>
 
-<div id="assumptions">
-  <p>
-    <em><%= link_to "I want to look at assumptions", assumptions_path %></em>
-  </p>
-</div>
-
-<div id="practices">
-  <p>
-    <em><%= link_to "I want to look at practices", practices_path %></em>
-  </p>
-</div>
-<% if session[:userinfo].present? %>
-<%= button_to 'Logout', 'auth/logout', method: :get, data: { turbo: false } %>
-<% else %>
-<%= button_to 'Login', '/auth/auth0', method: :post, data: { turbo: false } %>
-<% end %>
-
+</body>
+</html>

@@ -10,12 +10,33 @@ RSpec.describe MapController, type: :controller do
     end
   end
 
+  def attributes_for_assumption
+    {
+      name: 'Example Assumption',
+      description: 'Example Description'
+    }
+  end
+
+  def attributes_for_theory
+    {
+      name: 'Example Theory',
+      description: 'Example Description'
+    }
+  end
+
+  def attributes_for_practice
+    {
+      name: 'Example Practice',
+      description: 'Example Description'
+    }
+  end
+
   describe 'GET #all' do
     it 'returns a JSON object containing nodes' do
       # Create records for main models
-      assumptions = create_list(:assumption, 3)
-      theories = create_list(:theory, 2)
-      practices = create_list(:practice, 4)
+      assumptions = Array.new(3) { Assumption.create!(attributes_for_assumption) }
+      theories = Array.new(2) { Theory.create!(attributes_for_theory) }
+      practices = Array.new(4) { Practice.create!(attributes_for_practice) }
 
       # Create records for join tables through associations
       assumptions[0].theories << theories[0]

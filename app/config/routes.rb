@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :theories
   resources :assumptions
   resources :practices
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  root 'main#index'
+  root 'map#index'
 
   # User Login
   get '/auth/auth0/callback' => 'auth0#callback'
@@ -16,12 +13,15 @@ Rails.application.routes.draw do
   get '/auth/logout' => 'auth0#logout'
   get '/user/info' => 'user#show'
   if Rails.env.test?
+    get 'test', to: 'test#index'
     namespace :test do
       resource :session, only: %i[create]
     end
   end
 
   # Concept Map
-  get '/map' => 'map#index'
+  get '/init' => 'main#index'
   get '/api/v1/map' => 'map#all'
+
+  match '*path', to: redirect('/'), via: :all
 end

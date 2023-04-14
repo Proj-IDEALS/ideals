@@ -15,8 +15,6 @@ services:
   guard:
     build:
       context: ./app
-    env_file:
-      - .env
     command: bundle exec guard --no-bundler-warning --no-interactions
     volumes:
       - "./app:/opt/app"

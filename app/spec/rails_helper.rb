@@ -9,7 +9,16 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require_relative 'support/authentication_helpers'
 require_relative 'support/request_helpers'
-# Add additional requires below this line. Rails is not loaded until this point!
+
+require 'simplecov'
+SimpleCov.start 'rails'
+
+SimpleCov.start do
+  add_filter 'app/controllers/main_controller.rb'
+  add_filter 'app/helpers'
+end
+
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -65,7 +74,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  #Add login session helper
+  # Add login session helper
   config.include RequestHelpers, type: :request
-
 end

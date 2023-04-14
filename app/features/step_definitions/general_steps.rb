@@ -15,8 +15,11 @@ Given('the following {word} exist:') do |entity_type, data_table|
   end
 end
 
-# When (/^([^\(\)]*)(?:\(name="(.*)"\))? page is visited/) do |entity_type, param|
-When(/(.*) page is visited/) do |page_name|
+Given('root page is visited') do
+  visit '/init'
+end
+
+When(/^(?!root)(.*) page is visited/) do |page_name|
   visit send("#{page_name}_path")
 end
 

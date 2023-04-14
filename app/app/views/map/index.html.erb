@@ -4,12 +4,35 @@
 <head>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'bootstrap-icons', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'boxicons', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <title>IDEALS</title>
+
+  <style>
+      body, main, section {
+          min-height: 100vh;
+      }
+
+      #concept-map {
+          width: 100%;
+          height: 100vh;
+          background-color: #FAF9F6;
+      }
+
+      .site-header {
+          background-color: #500000;
+      }
+
+      .ui-autocomplete {
+          z-index: 1050;
+      }
+  </style>
 </head>
 
 <body class="container-fluid wrapper">
@@ -23,6 +46,13 @@
     </a>
   </div><!-- End Logo -->
 
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="get" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword" id="autocomplete">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
+
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
 
@@ -32,30 +62,33 @@
         </a>
       </li><!-- End Search Icon-->
 
+      <li class="nav-item pe-3">
+        <% if session[:userinfo].present? %>
+          <%= button_to 'Logout', 'auth/logout', method: :get, class: "btn btn-outline-secondary", data: { turbo: false } %>
+        <% else %>
+          <%= button_to 'Login', '/auth/auth0', method: :post, class: "btn btn-outline-primary", data: { turbo: false } %>
+        <% end %>
+      </li>
+
     </ul>
   </nav><!-- End Icons Navigation -->
-
 </header><!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
-
-  <iframe class="embed-responsive-item" src='/' style='border:0; width: 100%; height: 95%;'></iframe>
-
+<aside id="sidebar" class="sidebar" style="padding: 0">
+  <iframe id='iframe' class="embed-responsive-item" src='/init' style='border:0; width: 100%; height: 95%'></iframe>
 </aside><!-- End Sidebar-->
 
 
-<main id="main" class="main">
+<main id="main" class="main" style="padding: 20px;">
 
   <section class="section">
-    <div class="row">
+    <div class="row" style="min-height: 100vh;">
       <div class="col-lg-12">
 
-        <div class="card" style="height: 100%;">
-          <div class="card-body" id="graph">
-            <div id="concept-map">
-
-            </div>
+        <div class="card" style="min-height: 90vh;">
+          <div class="card-body" id="graph" style="padding: 0">
+            <div id="concept-map" style="padding: 0; min-height: 90vh;"></div>
           </div>
         </div>
       </div>
@@ -71,5 +104,6 @@
 
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'search', 'data-turbolinks-track': 'reload' %>
 
 </html>

@@ -1,9 +1,14 @@
-<h1>New theory</h1>
+<div style="padding-left: 20px; padding-right: 10px">
 
-<%= render "form", theory: @theory %>
+  <div class="engraved">
+    <span>New theory</span>
+  </div>
 
-<br>
+  <%= render "form", theory: @theory %>
 
-<div>
-  <%= link_to "Back to theories", theories_path %>
+  <br>
+
+  <div>
+    <%= link_to "Back to theories", theories_path %>
+  </div>
 </div>
