@@ -6,7 +6,7 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -\
     nodejs \
   && apt-get upgrade -qq \
   && apt-get clean \
-  && apt-get install libvips
+  && apt-get install libvips \
   && rm -rf /var/lib/apt/lists/*\
   && npm install -g yarn@1
 
