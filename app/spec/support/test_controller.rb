@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/test_controller.rb
 class TestController < ApplicationController
   include Secured

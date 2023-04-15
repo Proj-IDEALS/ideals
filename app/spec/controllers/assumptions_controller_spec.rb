@@ -22,7 +22,28 @@ RSpec.describe AssumptionsController, type: :controller do
     end
   end
 
+  describe 'GET #index' do
+    it 'retrieves all assumptions and renders the index template' do
+      assumption1 = Assumption.create!(name: 'Assumption 1', description: 'Sample assumption description 1')
+      assumption2 = Assumption.create!(name: 'Assumption 2', description: 'Sample assumption description 2')
+
+      get :index
+
+      expect(assigns(:assumptions)).to match_array([assumption1, assumption2])
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template(:index)
+    end
+  end
+
   describe 'updates' do
+    let(:valid_attributes) do
+      { name: 'Assumption test', description: 'Description for assumption test' }
+    end
+
+    let(:invalid_attributes) do
+      { name: '', description: 'Sample assumption description' }
+    end
+
     it 'redirects to the assumptions details page and flashes a notice' do
       assumption = Assumption.create(name: 'Assumption test', description: 'Description for assumption test')
       get :update, params: { id: assumption.id, assumption: { description: 'New description for assumption test' } }
@@ -40,6 +61,15 @@ RSpec.describe AssumptionsController, type: :controller do
       assumption.reload
       expect(assumption.description.body.to_plain_text).to eq('New Description')
       assumption.destroy
+    end
+
+    it 'does not update the assumption and returns unprocessable entity status' do
+      assumption = Assumption.create! valid_attributes
+      patch :update, params: { id: assumption.id, assumption: invalid_attributes }
+      assumption.reload
+      expect(assumption.name).to eq(valid_attributes[:name])
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to render_template(:edit)
     end
   end
 

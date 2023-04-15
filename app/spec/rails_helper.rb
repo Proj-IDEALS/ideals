@@ -15,7 +15,6 @@ SimpleCov.start 'rails'
 
 SimpleCov.start do
   add_filter 'app/controllers/main_controller.rb'
-  add_filter 'app/controllers/auth0_controller.rb'
   add_filter 'app/helpers'
 end
 
@@ -75,7 +74,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  #Add login session helper
+  # Add login session helper
   config.include RequestHelpers, type: :request
-
 end

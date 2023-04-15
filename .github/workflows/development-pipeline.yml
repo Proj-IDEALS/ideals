@@ -26,8 +26,6 @@ jobs:
         run: bin/rails db:schema:load
       - name: Set up database schema
         run: bin/rails db:migrate
-      - name: Generate tests
-        run: bin/rails generate rspec:install
       - name: Run tests
         run: bin/rake
   build:

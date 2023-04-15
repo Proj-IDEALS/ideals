@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # :nocov:
 
   def require_login
-    #if ENV['CUCUMBER'] is true, then return
+    # if ENV['CUCUMBER'] is true, then return
 
     return if ENV['CUCUMBER'] == 'true'
 
