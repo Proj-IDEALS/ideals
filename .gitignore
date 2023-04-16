@@ -44,4 +44,3 @@ app/node_modules/
 app/public
 
 node_modules
-yarn.lock
