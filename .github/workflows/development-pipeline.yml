@@ -1,9 +1,9 @@
 name: "CI Pipeline - DEVELOPMENT"
 on:
   push:
-    branches: [ "move-login" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "move-login" ]
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
