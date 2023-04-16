@@ -10,6 +10,12 @@
   <%= stylesheet_link_tag 'boxicons', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <title>IDEALS</title>
+
+  <style>
+      body, main, section {
+          min-height: 100vh;
+      }
+  </style>
 </head>
 
 <body class="container-fluid wrapper">
@@ -32,30 +38,35 @@
         </a>
       </li><!-- End Search Icon-->
 
+      <li class="nav-item pe-3">
+        <% if session[:userinfo].present? %>
+          <%= button_to 'Logout', 'auth/logout', method: :get, class: "btn btn-outline-secondary", data: { turbo: false } %>
+        <% else %>
+          <%= button_to 'Login', '/auth/auth0', method: :post, class: "btn btn-outline-primary", data: { turbo: false } %>
+        <% end %>
+      </li>
+
     </ul>
   </nav><!-- End Icons Navigation -->
-
 </header><!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar" style="padding: 0">
 
-  <iframe class="embed-responsive-item" src='/' style='border:0; width: 100%; height: 95%;'></iframe>
+  <iframe class="embed-responsive-item" src='/init' style='border:0; width: 100%; height: 95%'></iframe>
 
 </aside><!-- End Sidebar-->
 
 
-<main id="main" class="main">
+<main id="main" class="main" style="padding: 20px;">
 
   <section class="section">
-    <div class="row">
+    <div class="row" style="min-height: 100vh;">
       <div class="col-lg-12">
 
-        <div class="card" style="height: 100%;">
-          <div class="card-body" id="graph">
-            <div id="concept-map">
-
-            </div>
+        <div class="card" style="min-height: 90vh;">
+          <div class="card-body" id="graph" style="padding: 0">
+            <div id="concept-map" style="padding: 0; min-height: 90vh;"> </div>
           </div>
         </div>
       </div>
@@ -64,6 +75,13 @@
   </section>
 
 </main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+  <div class="copyright">
+    &copy; Copyright <strong><span>IDEALS</span></strong>. All Rights Reserved
+  </div>
+</footer><!-- End Footer -->
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

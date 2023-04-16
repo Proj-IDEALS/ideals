@@ -25,7 +25,7 @@ Given(/^I have created assumptions, theories, practices and their associations$/
 end
 
 When(/^I visit the map page$/) do
-  visit '/map'
+  visit '/'
 end
 
 Then(/^I should see the IDEALS logo$/) do

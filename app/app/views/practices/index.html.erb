@@ -18,7 +18,7 @@
 <% if session[:userinfo].present? %>
 <p><%= link_to "New practice", new_practice_path %></p>
 <% end %>
-<p><%= link_to "Back to home", root_path, :onclick => 'resetGraph()'  %></p>
+<p><%= link_to "Back to home", '/init', :onclick => 'resetGraph()'  %></p>
 
 <script>
     function callPractice(practiceId) {

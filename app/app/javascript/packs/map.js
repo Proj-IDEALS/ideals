@@ -24,6 +24,7 @@ function resetGraph() {
     });
 
     graph.refreshPositions();
+    graph.fitView();
 }
 
 const width = document.getElementById('concept-map').scrollWidth;
@@ -31,34 +32,63 @@ const height = document.getElementById('concept-map').scrollHeight || 700;
 
 const toolbar = new G6.ToolBar();
 
+
 const menu = new G6.Menu({
+
     getContent(e) {
+        const id = e.item._cfg.id;
         const outDiv = document.createElement('div');
-        outDiv.style.width = '180px';
-        outDiv.innerHTML = `<ul>
-        <li>menu01</li>
-        <li>menu01</li>
-        <li>menu01</li>
-        <li>menu01</li>
-        <li>menu01</li>
-      </ul>`
+        outDiv.innerHTML = `
+        <div class="btn-group" role="group" aria-label="Icon group">
+            <button type="button" class="btn btn-outline-secondary expand">
+                <i class="bi bi-arrows-fullscreen expand"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary contract">
+                <i class="bi bi-arrows-angle-contract contract"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary delete">
+                <i class="bi bi-x-lg delete"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary focus">
+                <i class="bi bi-arrow-counterclockwise focus"></i>
+            </button>
+        </div>
+        `
         return outDiv
     },
     handleMenuClick(target, item) {
-        console.log(target, item)
+        const text = String(target.className);
+        if(text.includes('expand')) {
+            if (item._cfg.type === 'node') {
+                expandNode(item._cfg.id);
+            }
+        } else if (text.includes('contract')) {
+            if (item._cfg.type === 'node') {
+                contractNode(item._cfg.id);
+            }
+        } else if (text.includes('delete')) {
+            if (item._cfg.type === 'node') {
+                fadeOutNodeAndConnectedEdges(item._cfg.id);
+            }
+        } else if (text.includes('focus')) {
+            if (item._cfg.type === 'node') {
+                fadeOutNodeAndConnectedEdges(item._cfg.id, 1);
+            }
+        }
     },
 });
 
 const graph = new G6.Graph({
     container: 'concept-map',
-    plugins: [toolbar],
+    plugins: [toolbar, menu],
     width,
     height,
     fitViewPadding: true,
+    fitCenter: true,
     layout: {
         type: 'force',
         preventOverlap: true,
-        linkDistance: 500
+        linkDistance: 1000
     },
     defaultNode: {
         type: 'rect',
@@ -100,7 +130,7 @@ const graph = new G6.Graph({
     }
 });
 
-function initGraph(fade=false, label) {
+function initGraph(fade = false, label) {
     fetch("api/v1/map")
         .then((response) => response.json())
         .then(data => {
@@ -142,9 +172,12 @@ function initGraph(fade=false, label) {
             graph.data(graphData);
             graph.render();
 
-            if(fade) {
+            if (fade) {
                 fadeOutUnconnected(label)
             }
+            setTimeout(() => {
+                graph.fitView();
+            }, 200);
         });
 }
 
@@ -199,6 +232,129 @@ function fadeOutUnconnected(nodeId) {
     });
 
     graph.refreshPositions();
+}
+
+function expandNode(nodeId, opacity = 1) {
+    const connectedNodeIds = new Set([nodeId]);
+    const connectedEdgeIds = new Set();
+
+    graph.getEdges().forEach(edge => {
+        if (edge.getSource().get('id') === nodeId || edge.getTarget().get('id') === nodeId) {
+            connectedNodeIds.add(edge.getSource().get('id'));
+            connectedNodeIds.add(edge.getTarget().get('id'));
+            connectedEdgeIds.add(edge.get('id'));
+        }
+    });
+
+    // Increase the opacity of connected nodes and edges
+    graph.getNodes().forEach(node => {
+        if (connectedNodeIds.has(node.get('id'))) {
+            const currentOpacity = node.getModel().style.opacity;
+            const updatedOpacity = Math.min(opacity, currentOpacity + opacity);
+            node.update({
+                style: {
+                    opacity: updatedOpacity,
+                },
+                labelCfg: {
+                    style: {
+                        opacity: updatedOpacity,
+                    },
+                }
+            });
+        }
+    });
+
+    graph.getEdges().forEach(edge => {
+        if (connectedEdgeIds.has(edge.get('id'))) {
+            const currentOpacity = edge.getModel().style.opacity;
+            const updatedOpacity = Math.min(opacity, currentOpacity + opacity);
+            edge.update({
+                style: {
+                    opacity: updatedOpacity,
+                },
+            });
+        }
+    });
+
+    graph.refreshPositions();
+}
+
+function contractNode(nodeId, opacity = 0) {
+    // Get directly connected nodes and edges
+    const connectedNodeIds = new Set();
+    const connectedEdgeIds = new Set();
+
+    graph.getEdges().forEach(edge => {
+        if (edge.getSource().get('id') === nodeId || edge.getTarget().get('id') === nodeId) {
+            connectedNodeIds.add(edge.getSource().get('id'));
+            connectedNodeIds.add(edge.getTarget().get('id'));
+            connectedEdgeIds.add(edge.get('id'));
+        }
+    });
+
+    // Remove the given nodeId from connectedNodeIds
+    connectedNodeIds.delete(nodeId);
+
+    // Fade out connected edges
+    graph.getEdges().forEach(edge => {
+        if (connectedEdgeIds.has(edge.get('id'))) {
+            edge.update({
+                style: {
+                    opacity: opacity,
+                },
+            });
+        }
+    });
+
+    // Fade out connected nodes only if they are not connected to other nodes
+    graph.getNodes().forEach(node => {
+        if (connectedNodeIds.has(node.get('id'))) {
+            const connections = graph.getEdges().filter(edge => {
+                return (
+                    edge.getSource().get('id') === node.get('id') || edge.getTarget().get('id') === node.get('id')
+                );
+            });
+
+            if (connections.length === 1) {
+                node.update({
+                    style: {
+                        opacity: opacity,
+                    },
+                    labelCfg: {
+                        style: {
+                            opacity: opacity,
+                        },
+                    },
+                });
+            }
+        }
+    });
+
+    graph.refreshPositions();
+}
+
+function fadeOutNodeAndConnectedEdges(nodeId, opacity = 0.2) {
+    const connectedEdges = graph.getEdges().filter(edge => {
+        return edge.getSource().get('id') === nodeId || edge.getTarget().get('id') === nodeId;
+    });
+    const node = graph.findById(nodeId);
+    node.update({
+        style: {
+            opacity: opacity,
+        },
+        labelCfg: {
+            style: {
+                opacity: opacity,
+            },
+        },
+    });
+    connectedEdges.forEach(edge => {
+        edge.update({
+            style: {
+                opacity: opacity,
+            },
+        });
+    });
 }
 
 initGraph(false, 0);
