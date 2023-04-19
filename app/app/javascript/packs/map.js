@@ -1,6 +1,7 @@
 import G6 from "@antv/g6";
 import wrapText from "./helper";
 
+
 function resetGraph() {
     graph.getNodes().forEach(node => {
         node.update({
@@ -58,7 +59,7 @@ const menu = new G6.Menu({
     },
     handleMenuClick(target, item) {
         const text = String(target.className);
-        if(text.includes('expand')) {
+        if (text.includes('expand')) {
             if (item._cfg.type === 'node') {
                 expandNode(item._cfg.id);
             }
@@ -95,13 +96,14 @@ const graph = new G6.Graph({
         size: [160, 190],
         style: {
             stroke: '#658FF9',
+            radius: 10,
         },
         labelCfg: {
             position: 'center',
             offsetY: 0,
             style: {
                 fill: '#595959',
-                fontSize: 15,
+                fontSize: 20,
             }
         },
         linkPoints: {
@@ -120,10 +122,10 @@ const graph = new G6.Graph({
         shape: 'polyline',
         style: {
             stroke: '#333',
-            endArrow: true
+            endArrow: false
         },
         curveStrength: 0.5,
-        curveOffset: 20
+        curveOffset: 50
     },
     modes: {
         default: ['zoom-canvas', 'drag-canvas', 'drag-node'],
@@ -142,7 +144,7 @@ function initGraph(fade = false, label) {
                         id: (label + node.id.toString()).toString(),
                         label: node.name,
                         style: {
-                            lineWidth: 2,
+                            lineWidth: 4,
                             stroke: colors[label],
                         },
                         preRect: {
@@ -180,7 +182,6 @@ function initGraph(fade = false, label) {
             }, 200);
         });
 }
-
 
 graph.on('node:mouseenter', (evt) => {
     const {item} = evt;
