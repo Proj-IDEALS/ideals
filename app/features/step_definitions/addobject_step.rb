@@ -18,7 +18,7 @@ When('I click the {string} button') do |button_name|
 end
 
 Then("I should see the new theory's details") do
-  expect(page).to have_content('Core Theory 1')
+  expect(page).to have_content('Core theory 1')
   expect(page).to have_content('How to learning.')
 end
 

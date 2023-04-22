@@ -9,7 +9,7 @@ Feature: update an entity
     | Theory 1  | Desc1       |
     When theory with name="Theory 1" is visited 
     When I click on a link containing the word edit
-    Then I should see "Editing theory"
+    Then I should see "Edit theory"
     And I should see textbox with id "theory_name" and value "Theory 1"
 
   Scenario: Edit an existing assumption with a valid new description
@@ -18,7 +18,7 @@ Feature: update an entity
     | Assumption 1  | Desc1       |
     When assumption with name="Assumption 1" is visited 
     When I click on a link containing the word edit
-    Then I should see "Editing assumption"
+    Then I should see "Edit assumption"
     And I should see textbox with id "assumption_name" and value "Assumption 1"
 
   Scenario: Edit an existing practice with a valid new description
@@ -27,5 +27,5 @@ Feature: update an entity
     | Practice 1  | Desc1       |
     When practice with name="Practice 1" is visited 
     When I click on a link containing the word edit
-    Then I should see "Editing practice"
+    Then I should see "Edit practice"
     And I should see textbox with id "practice_name" and value "Practice 1"
