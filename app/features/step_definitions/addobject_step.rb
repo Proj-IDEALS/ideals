@@ -49,3 +49,11 @@ Then("I should see the new practice's details") do
   expect(page).to have_content('Practice 1')
   expect(page).to have_content('Here is the way for how to improve the skill.')
 end
+
+When(/I fill in (.*) description with "(.*)"/) do |entity_type, data|
+ fill_in_rich_text_area '#{entity_type}_description', with: data  
+end
+
+When(/I fill in name with "(.*)"/) do |data|
+ fill_in 'Name', with: data  
+end
