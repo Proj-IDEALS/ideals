@@ -76,6 +76,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
   gem 'webmock'
+  gem 'browserstack-local'
 end
 
 gem 'rspec-rails', group: %i[development test]

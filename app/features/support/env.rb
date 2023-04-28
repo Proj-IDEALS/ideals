@@ -10,7 +10,7 @@ require 'cucumber/rails'
 require 'simplecov'
 SimpleCov.start 'rails'
 
-ENV['CUCUMBER'] = 'true'
+ENV['CUCUMBER_Skip_Auth'] = 'true'
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -38,7 +38,7 @@ ActionController::Base.allow_rescue = false
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
-  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.strategy = :truncation
 rescue NameError
   raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
@@ -46,16 +46,16 @@ end
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
-#   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
+#  Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
 #     # { except: [:widgets] } may not do what you expect here
 #     # as Cucumber::Rails::Database.javascript_strategy overrides
 #     # this setting.
-#     DatabaseCleaner.strategy = :truncation
-#   end
+#    DatabaseCleaner.strategy = :truncation
+#  end
 #
-#   Before('not @no-txn', 'not @selenium', 'not @culerity', 'not @celerity', 'not @javascript') do
-#     DatabaseCleaner.strategy = :transaction
-#   end
+#  Before('not @no-txn', 'not @selenium', 'not @culerity', 'not @celerity', 'not @javascript', 'not @auth', 'not @selenium @auth') do
+#    DatabaseCleaner.strategy = :transaction
+#  end
 #
 
 # Possible values are :truncation and :transaction
@@ -66,3 +66,6 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.register_driver :rack_test do |app|
   Capybara::RackTest::Driver.new(app, headers: { 'HTTP_USER_AGENT' => 'Capybara' })
 end
+
+Capybara.server_port = 3001
+

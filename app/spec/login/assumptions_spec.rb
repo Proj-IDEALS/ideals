@@ -12,6 +12,7 @@ RSpec.describe AssumptionsController, type: :controller do
         get :update,
             params: { id: assumption.id, assumption: { description: 'New description for assumption test' } }
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
         assumption.destroy
       end
     end
@@ -23,6 +24,7 @@ RSpec.describe AssumptionsController, type: :controller do
         assumption = Assumption.create(name: 'Assumption test', description: 'Description for assumption test')
         get :destroy, params: { id: assumption.id }
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
         assumption.destroy
       end
     end
@@ -33,6 +35,7 @@ RSpec.describe AssumptionsController, type: :controller do
       it 'redirects to the root path' do
         get :create
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
       end
     end
     context 'when user is logged in' do
