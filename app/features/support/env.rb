@@ -8,6 +8,7 @@
 
 require 'cucumber/rails'
 require 'simplecov'
+require 'selenium-webdriver'
 SimpleCov.start 'rails'
 
 ENV['CUCUMBER_Skip_Auth'] = 'true'
@@ -69,3 +70,10 @@ end
 
 Capybara.server_port = 3001
 
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+#Capybara.default_driver = :chrome
+Capybara.javascript_driver = :chrome
