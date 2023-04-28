@@ -88,3 +88,4 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication 
 # webpack
 gem 'pg'
 gem 'webpacker'
+gem 'nokogiri'

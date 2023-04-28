@@ -12,39 +12,45 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-<br>
+  <br>
 
-  <div>
+  <div class="form-group">
     <%= form.label :description, style: "display: block" %>
     <%= form.rich_text_area :description %>
   </div>
 
-<br>
+  <br>
 
-<div class="field">
-  <%= form.label :theory_ids, "Select Theory" %> <br>
-  <% Theory.all.each do |theory| %>
-    <%= check_box_tag "assumption[theory_ids][]", theory.id, @assumption.theories.include?(theory), id: "theory_#{theory.id}" %>
-    <%= label_tag "theory_#{theory.id}", theory.name, for: "theory_#{theory.id}" %> <br>
-  <% end %>
-</div>
+  <div class="field form-group">
+    <%= form.label :theory_ids, "Select Theory" %>
+    <% Theory.all.each do |theory| %>
+      <div class="form-check">
+        <%= check_box_tag "assumption[theory_ids][]", theory.id, @assumption.theories.include?(theory),
+                          id: "theory_#{theory.id}", class: 'form-check-input' %>
+        <%= label_tag "theory_#{theory.id}", theory.name, for: "theory_#{theory.id}", class: 'form-check-label' %>
+      </div>
+    <% end %>
+  </div>
 
-<br>
+  <br>
 
-<div class="field">
-  <%= form.label :practice_ids, "Select Practice" %> <br>
-  <% Practice.all.each do |practice| %>
-    <%= check_box_tag "assumption[practice_ids][]", practice.id, @assumption.practices.include?(practice), id: "practice_#{practice.id}" %>
-    <%= label_tag "practice_#{practice.id}", practice.name, for: "practice_#{practice.id}" %> <br>
-  <% end %>
-</div>
+  <div class="field form-group">
+    <%= form.label :practice_ids, "Select Practice" %>
+    <% Practice.all.each do |practice| %>
+      <div class="form-check">
+        <%= check_box_tag "assumption[practice_ids][]", practice.id, @assumption.practices.include?(practice),
+                          id: "practice_#{practice.id}", class: 'form-check-input' %>
+        <%= label_tag "practice_#{practice.id}", practice.name, for: "practice_#{practice.id}", class: 'form-check-label' %>
+      </div>
+    <% end %>
+  </div>
 
-<br>
+  <br>
 
   <div>
     <%= form.submit %>

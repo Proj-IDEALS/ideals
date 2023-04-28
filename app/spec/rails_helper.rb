@@ -14,7 +14,6 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 SimpleCov.start do
-  add_filter 'app/controllers/main_controller.rb'
   add_filter 'app/helpers'
 end
 
