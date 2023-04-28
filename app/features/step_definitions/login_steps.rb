@@ -15,5 +15,5 @@ When('I enter valid credentials') do
 end
 
 Then('I should be redirected to the main page') do
-  expect(page).to have_content('IDEALS')
+  expect(page).to have_content('Logout')
 end

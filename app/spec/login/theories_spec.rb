@@ -11,6 +11,7 @@ RSpec.describe TheoriesController, type: :controller do
         theory = Theory.create(name: 'Theory test', description: 'Description for theory test')
         get :update, params: { id: theory.id, theory: { description: 'New description for theory test' } }
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
         theory.destroy
       end
     end
@@ -22,6 +23,7 @@ RSpec.describe TheoriesController, type: :controller do
         theory = Theory.create(name: 'Theory test', description: 'Description for theory test')
         get :destroy, params: { id: theory.id }
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
         theory.destroy
       end
     end
@@ -32,6 +34,7 @@ RSpec.describe TheoriesController, type: :controller do
       it 'redirects to the root path' do
         get :create
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
       end
     end
     context 'when user is logged in' do
