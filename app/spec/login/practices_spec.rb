@@ -11,6 +11,7 @@ RSpec.describe PracticesController, type: :controller do
         practice = Practice.create(name: 'Practice test', description: 'Description for practice test')
         get :update, params: { id: practice.id, practice: { description: 'New description for practice test' } }
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
         practice.destroy
       end
     end
@@ -22,6 +23,7 @@ RSpec.describe PracticesController, type: :controller do
         practice = Practice.create(name: 'Practice test', description: 'Description for practice test')
         get :destroy, params: { id: practice.id }
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
         practice.destroy
       end
     end
@@ -32,6 +34,7 @@ RSpec.describe PracticesController, type: :controller do
       it 'redirects to the root path' do
         get :create
         expect(response).to redirect_to(root_path)
+        expect(flash[:alert]).to match(/Log in is required. You do not have rights to perform that action. If you believe you have the rights, please log in with your account./)
       end
     end
     context 'when user is logged in' do
