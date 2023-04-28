@@ -30,7 +30,7 @@ When('I select {string} and {string} as practices') do |practice1, practice2|
   check(practice2)
 end
 
-When('I click on the {string} button') do |button|
+When(/I click on the "(.*)" button/) do |button|
   click_button(button)
 end
 

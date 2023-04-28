@@ -7,7 +7,7 @@ Feature: Entity view page should contain the name of the entity and its descript
         | Theory 1  | Desc1       |
 
 #	When theory with name="Theory 1" is visited
-	When theory with name="Theory 1" is visited
+	When root page of theory with name="Theory 1" is visited
         Then I should see "Theory 1"
         Then I should see "Desc1"
 
@@ -16,7 +16,7 @@ Feature: Entity view page should contain the name of the entity and its descript
         | name      | description |
         | Theory 1  |	          |
 
-	When theory with name="Theory 1" is visited
+	When root page of theory with name="Theory 1" is visited
         Then I should see "Theory 1"
         Then I should see "No description provided"
 
@@ -25,7 +25,7 @@ Feature: Entity view page should contain the name of the entity and its descript
         | name     	 | description |
         | Assumption 1	| Desc1       |
 
-	When assumption with name="Assumption 1" is visited
+	When root page of assumption with name="Assumption 1" is visited
         Then I should see "Assumption 1"
         Then I should see "Desc1"
 
@@ -35,7 +35,7 @@ Feature: Entity view page should contain the name of the entity and its descript
         | name     	 | description |
         | Assumption 1	|	        |
 
-	When assumption with name="Assumption 1" is visited
+	When root page of assumption with name="Assumption 1" is visited
         Then I should see "Assumption 1"
         Then I should see "No description provided"
 
@@ -44,7 +44,7 @@ Feature: Entity view page should contain the name of the entity and its descript
         | name     	 | description |
         | Practice 1 	 | Desc1       |
 
-	When practice with name="Practice 1" is visited
+	When root page of practice with name="Practice 1" is visited
         Then I should see "Practice 1"
         Then I should see "Desc1"
 
@@ -53,6 +53,6 @@ Feature: Entity view page should contain the name of the entity and its descript
         | name     	 | description |
         | Practice 1 	 | 	       |
 
-	When practice with name="Practice 1" is visited
+	When root page of practice with name="Practice 1" is visited
         Then I should see "Practice 1"
         Then I should see "No description provided"
