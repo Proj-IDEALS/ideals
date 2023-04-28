@@ -1,4 +1,4 @@
-@javascript @auth
+@selenium @auth
 Feature: addobject_with_auth
   As a authorized user
   I want to create and view theories, assumptions, and practice after login with my account
