@@ -3,9 +3,9 @@ development:
   auth0_client_id: zVt9TW2CvNPKc6tVavCcpov9pIuOtRxW
   auth0_client_secret: 6HFPxe7fKC-oM2FImZcp8FM0YxNfcJwj6-Jr_5KVGI7EHCKfrhpqb78bgyjWSbCW
 test:
-  auth0_domain:
-  auth0_client_id:
-  auth0_client_secret:
+  auth0_domain: ideals-test.us.auth0.com
+  auth0_client_id: dL2uTrEU1GjmqWnM52933wwiSi47a1kJ
+  auth0_client_secret: RxuNFmJftoTGxHyGAxjACuvfr7YX1Oa6kckri0f4XtGNjIEtrdSb46sR1A-sK77F
 production:
   auth0_domain: ideals.us.auth0.com
   auth0_client_id: zVt9TW2CvNPKc6tVavCcpov9pIuOtRxW

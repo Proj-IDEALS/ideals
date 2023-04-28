@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def require_login
     # if ENV['CUCUMBER'] is true, then return
 
-    return if ENV['CUCUMBER'] == 'true'
+    return if ENV['CUCUMBER_Skip_Auth'] == 'true'
 
     return if session[:userinfo].present?
 
