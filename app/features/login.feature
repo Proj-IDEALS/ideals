@@ -1,4 +1,4 @@
-@selenium
+@javascript
 Feature: Auth0 Login
 
   Scenario: User logs in with valid credentials

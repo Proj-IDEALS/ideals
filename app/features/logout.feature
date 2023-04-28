@@ -1,4 +1,4 @@
-@selenium
+@javascript
 Feature: Auth0 Logout
 
   Scenario: User logout
