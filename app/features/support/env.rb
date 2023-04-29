@@ -75,7 +75,7 @@ Capybara.register_driver :chrome do |app|
   #Capybara::Selenium::Driver.new(app, browser: :chrome, options: Selenium::WebDriver::Chrome::Options.new(binary: ENV['GOOGLE_CHROME_SHIM']), :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: %w[headless disable-gpu no-sandbox] }))
   #Selenium::WebDriver::Chrome.path = "./chromedriver"
   #Selenium.webdriver.chrome.service.Service(executable_path: str = "/workspaces/ideals/app/chromedriver")
-  options = Selenium::WebDriver::Chrome::Options.new(args: ['--memory-limit=512','--no-sandbox'])
+  options = Selenium::WebDriver::Chrome::Options.new(args: ['--memory-limit=4096','--no-sandbox'])
 
   Capybara::Selenium::Driver.new(app, :browser => :chrome, options: options)
 end
