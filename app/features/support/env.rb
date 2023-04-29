@@ -72,7 +72,9 @@ Capybara.server_port = 3001
 
 
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  #Capybara::Selenium::Driver.new(app, browser: :chrome, options: Selenium::WebDriver::Chrome::Options.new(binary: ENV['GOOGLE_CHROME_SHIM']), :desired_capabilities => Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: %w[headless disable-gpu no-sandbox] }))
+
+  Capybara::Selenium::Driver.new(app, :browser => :chrome, options: Selenium::WebDriver::Chrome::Options.new(binary: '/workspaces/ideals/app/chromedriver'))
 end
 
 #Capybara.default_driver = :chrome

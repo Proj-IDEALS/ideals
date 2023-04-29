@@ -30,7 +30,7 @@ Feature: update an entity
     Then I should see "Edit practice"
     And I should see textbox with id "practice_name" and value "Practice 1"
 
-  @selenium
+  @javascript
   Scenario: Edit the theory with a new description
     Given the following theories exist:
     | name      | description |
@@ -49,7 +49,7 @@ Feature: update an entity
     And I click on the "Update Theory" button
     Then I should see "Name can't be blank"
  
-  @selenium
+  @javascript
   Scenario: Edit the assumption with a new description
     Given the following assumptions exist:
     | name      | description |
@@ -68,7 +68,7 @@ Feature: update an entity
     And I click on the "Update Assumption" button
     Then I should see "Name can't be blank"
 
-  @selenium
+  @javascript
   Scenario: Edit the practice with a new description
     Given the following practices exist:
     | name      | description |
