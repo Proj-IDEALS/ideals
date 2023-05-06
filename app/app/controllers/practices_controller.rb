@@ -6,7 +6,7 @@ class PracticesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   # GET /practices or /practices.json
   def index
-    @practices = Practice.all
+    @practices = Practice.paginate(page: params[:page], per_page: 12)
   end
 
   # GET /practices/1 or /practices/1.json

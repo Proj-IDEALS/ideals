@@ -5,7 +5,7 @@ class AssumptionsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   # GET /assumptions or /assumptions.json
   def index
-    @assumptions = Assumption.all
+    @assumptions = Assumption.paginate(page: params[:page], per_page: 12)
   end
 
   # GET /assumptions/1 or /assumptions/1.json

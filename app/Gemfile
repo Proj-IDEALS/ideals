@@ -89,3 +89,4 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication 
 gem 'pg'
 gem 'webpacker'
 gem 'nokogiri'
+gem 'will_paginate', '~> 3.3.0'

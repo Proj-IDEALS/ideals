@@ -18,16 +18,16 @@
   <% assumption.theories.each do |theory| %>
     <p>
       <strong>Theory:</strong>
-      <%= theory.name %>
-      <em><%= link_to "show this theory", theory_path(theory.id) %></em>
+      <%= theory.name.capitalize %><br>
+      <%= link_to "show this theory", theory_path(theory.id) %>
     </p>
   <% end %>
 
   <% assumption.practices.each do |practice| %>
     <p>
       <strong>Practice:</strong>
-      <%= practice.name %>
-      <em><%= link_to "show this practice", practice_path(practice.id) %></em>
+      <%= practice.name.capitalize %><br>
+      <%= link_to "show this practice", practice_path(practice.id) %>
     </p>
   <% end %>
 </div>

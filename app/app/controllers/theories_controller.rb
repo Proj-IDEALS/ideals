@@ -6,7 +6,7 @@ class TheoriesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   # GET /theories or /theories.json
   def index
-    @theories = Theory.all
+    @theories = Theory.paginate(page: params[:page], per_page: 12)
   end
 
   # GET /theories/1 or /theories/1.json

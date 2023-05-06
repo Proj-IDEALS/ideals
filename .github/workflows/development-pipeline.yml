@@ -21,5 +21,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "{{defaultContext}}:app"
+          file: "prod.Dockerfile"
           push: true
           tags: isurangaperera/ideals:latest

@@ -4,8 +4,7 @@ services:
   app:
     build:
       context: ./app
-    env_file:
-      - .dev.env
+      dockerfile: dev.Dockerfile
     command: bundle exec rails server -b 0.0.0.0
     ports:
       - '3000:3000'
@@ -15,6 +14,7 @@ services:
   guard:
     build:
       context: ./app
+      dockerfile: dev.Dockerfile
     command: bundle exec guard --no-bundler-warning --no-interactions
     volumes:
       - "./app:/opt/app"

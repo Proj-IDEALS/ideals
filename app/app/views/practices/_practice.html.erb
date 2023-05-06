@@ -18,8 +18,8 @@
   <% practice.assumptions.each do |assump| %>
     <p>
       <strong>Assumption:</strong>
-      <%= assump.name %>
-      <em><%= link_to "show this assumption", assumption_path(assump.id) %></em>
+      <%= assump.name.capitalize %><br>
+      <%= link_to "show this assumption", assumption_path(assump.id) %>
     </p>
   <% end %>
 </div>

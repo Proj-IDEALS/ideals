@@ -1220,3 +1220,23 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.pagination .page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px; /* adjust as needed */
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: white; /* set to the background color of your page */
+}
+
+.iframe-container {
+  overflow-y: hidden;
+}

@@ -1,6 +1,6 @@
 # IDEALS
 
-## _Highly-interactive concept map of relationships between learning theories_
+## _Highly-interactive concept map of learning theories_
 
 [![CI Pipeline - DEVELOPMENT](https://github.com/Proj-IDEALS/ideals/actions/workflows/development-pipeline.yml/badge.svg)](https://github.com/Proj-IDEALS/ideals/actions/workflows/development-pipeline.yml) [![CI/CD Pipeline - RELEASE](https://github.com/Proj-IDEALS/ideals/actions/workflows/release-pipeline.yml/badge.svg)](https://github.com/Proj-IDEALS/ideals/actions/workflows/release-pipeline.yml) [![Dev Pipeline - Deploy to Azure Web App Service](https://github.com/Proj-IDEALS/ideals/actions/workflows/Deploy-to-azure-dev.yml/badge.svg)](https://github.com/Proj-IDEALS/ideals/actions/workflows/Deploy-to-azure-dev.yml)
 
@@ -22,29 +22,32 @@ docker-compose -f docker-compose.dev.yml up --build
 #### Without Docker-compose
 ##### Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
-* Git - [Download & Install Git](https://git-scm.com/downloads). OSX and Linux machines typically have this already installed.
-* Ruby  - [Download & Install Ruby](https://www.ruby-lang.org/en/documentation/installation/). OSX machines typically have this already installed. 
+* Git - [Download & Install Git](https://git-scm.com/downloads)
+* Ruby  - [Download & Install Ruby](https://www.ruby-lang.org/en/documentation/installation)
 * Rails - [Download & Install Rails](https://guides.rubyonrails.org/v5.1/getting_started.html#installing-rails)
-* npm - [Download & Install npm](https://nodejs.org/en/download/)
+* npm - [Download & Install npm](https://nodejs.org/en/download)
+* yarn - [Install yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
 
 ```sh
 git clone https://github.com/Proj-IDEALS/ideals.git
 cd ideals/app
 bundle install
+yarn install
 bundle exec rails server -b 0.0.0.0
 ```
-> Note: `export NODE_OPTIONS=--openssl-legacy-provider` is required if the webpack fails with code: 'ERR_OSSL_EVP_UNSUPPORTED'.
-> If image loading is not working, install libvps library in your system
-
-##### JavaScript Tests
-Make sure you have following libraries installed if you are running JS tests
-
-###### Mac
+If you encounter issues related to webpack compilation when working with nodejs, it could be due to using an outdated version of nodejs. Specifically, you may get an error related to a missing 'manifest.json' file or a similar issue. This error is caused by webpack silently failing with code: 'ERR_OSSL_EVP_UNSUPPORTED'. To fix this issue, you should make sure to use the latest LTS version of nodejs. You can check the current LTS version on the official nodejs website. If you are using an older version, update it to the latest LTS version. Additionally, you may need to set the following command in your terminal:
 ```sh
-brew install pkg-config cairo pango libpng jpeg giflib librsvg
+export NODE_OPTIONS=--openssl-legacy-provider
 ```
 
-###### Ubuntu
+> Note: If image loading is not working, install **libvps** library in your system
+
+## Testing
+In order to conduct automated feature testing within the developed system, a Selenium WebDriver has been employed in conjunction with the Cucumber testing framework. The Selenium WebDriver utilizes Google Chrome as the browser for executing test cases. Consequently, it is imperative that users ensure the presence of Google Chrome on their systems prior to initiating the test suite.
+
 ```sh
-sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+cd ideals/app
+bundle install
+yarn install
+rake
 ```

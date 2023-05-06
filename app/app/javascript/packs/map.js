@@ -132,17 +132,18 @@ const graph = new G6.Graph({
     }
 });
 
-function initGraph(fade = false, label) {
+function initGraph(fade = false, label, home = false) {
     fetch("api/v1/map")
         .then((response) => response.json())
         .then(data => {
             let graphData = {nodes: [], edges: []};
-            const colors = {assumptions: 'red', theories: 'blue', practices: 'green'};
+            const colors = {assumptions: 'red', theories: '#012970', practices: 'green'};
             ['assumptions', 'theories', 'practices'].forEach((label, i) => {
                 data[label].forEach((node) => {
                     graphData.nodes.push({
                         id: (label + node.id.toString()).toString(),
                         label: node.name,
+                        cat: label,
                         style: {
                             lineWidth: 4,
                             stroke: colors[label],
@@ -173,6 +174,10 @@ function initGraph(fade = false, label) {
             });
             graph.data(graphData);
             graph.render();
+
+            if (home) {
+               fadeOutNodesWithoutEdges();
+            }
 
             if (fade) {
                 fadeOutUnconnected(label)
@@ -358,7 +363,32 @@ function fadeOutNodeAndConnectedEdges(nodeId, opacity = 0.2) {
     });
 }
 
-initGraph(false, 0);
+function fadeOutNodesWithoutEdges() {
+    const nodes = graph.getNodes();
+
+    nodes.forEach((node) => {
+        const nodeId = node.get('id');
+        const edges = graph.getEdges();
+        const connectedEdges = edges.filter(edge => edge.getSource().get('id') === nodeId || edge.getTarget().get('id') === nodeId);
+
+        if (connectedEdges.length === 0) {
+            // Apply fade-out effect to the node without edges
+            graph.updateItem(node, {
+                style: {
+                    opacity: 0, // Adjust the value as needed (0 to 1, where 0 is fully transparent and 1 is fully opaque)
+                },
+                labelCfg: {
+                    style: {
+                        opacity: 0,
+                    },
+                },
+            });
+        }
+        graph.fitCenter();
+    });
+}
+
+initGraph(false, 0, true);
 
 window.fadeOutUnconnected = fadeOutUnconnected;
 window.resetGraph = resetGraph;
