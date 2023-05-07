@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/cucumber'
 require 'selenium-webdriver'
 require 'browserstack/local'
@@ -12,8 +14,7 @@ When('I click the logout button') do
   fill_in 'password', with: 'cucumber-test-password-001'
   click_button 'Continue'
   expect(page).to have_content('Logout')
-    click_button 'Logout'
-
+  click_button 'Logout'
 end
 
 Then('I should be returned to the main page') do

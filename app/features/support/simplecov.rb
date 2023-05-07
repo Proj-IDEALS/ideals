@@ -4,5 +4,5 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 SimpleCov.start do
-  #add_filter 'app/helpers'
+  # add_filter 'app/helpers'
 end

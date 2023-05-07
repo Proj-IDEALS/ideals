@@ -68,6 +68,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'browserstack-local'
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
@@ -76,7 +77,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
   gem 'webmock'
-  gem 'browserstack-local'
 end
 
 gem 'rspec-rails', group: %i[development test]
@@ -86,7 +86,7 @@ gem 'omniauth-auth0', '~> 3.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0' # prevents forged authentication requests
 
 # webpack
+gem 'nokogiri'
 gem 'pg'
 gem 'webpacker'
-gem 'nokogiri'
 gem 'will_paginate', '~> 3.3.0'

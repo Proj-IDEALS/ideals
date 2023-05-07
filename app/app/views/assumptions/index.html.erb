@@ -2,13 +2,21 @@
 
 <div class="flex-wrapper">
 
-  <div class="engraved" style="padding-left: 20px">
-    <span>Assumptions</span>
+  <div class="title-container" style="display: flex; align-items: center; justify-content: space-between; padding-left: 20px">
+    <div class="engraved">
+      <span>Assumptions</span>
+    </div>
+
+    <% if session[:userinfo].present? %>
+      <%= link_to new_assumption_path, class: "icon-link", style: "padding-right: 20px; font-size: 24px; position: relative; top: 5px;" do %>
+        <i class="bi bi-plus-square"></i>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="list-group list-group-light">
     <% @assumptions.each do |assumption| %>
-      <%= link_to assumption, :onclick => "callAssumption(#{assumption.id})",
+      <%= link_to assumption,
                   class: "list-group-item list-group-item-action px-3 border-0 ripple link" do %>
         <i class="bi bi-arrow-right-circle-fill"></i> <%= assumption.name.capitalize %>
       <% end %>
@@ -18,11 +26,6 @@
   <!-- if in the cucumber test, show the button -->
   <% if Rails.env.test? %>
     <p><%= link_to "New assumption", new_assumption_path %></p>
-  <% end %>
-
-  <!-- if in the production, show the button -->
-  <% if session[:userinfo].present? %>
-    <p style="padding-left: 20px"><%= link_to "New assumption", new_assumption_path %></p>
   <% end %>
 
   <div class="d-flex justify-content-center fixed-bottom">
@@ -56,14 +59,3 @@
   </div>
 
 </div>
-
-<script>
-    function callAssumption(assumptionId) {
-        const label = 'assumptions' + assumptionId;
-        window.parent.fadeOutUnconnected(label);
-    }
-
-    function resetGraph() {
-        window.parent.resetGraph();
-    }
-</script>
