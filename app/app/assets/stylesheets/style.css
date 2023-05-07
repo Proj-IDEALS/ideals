@@ -1230,10 +1230,11 @@ h6 {
 
 .fixed-bottom {
   position: fixed;
-  bottom: 20px; /* adjust as needed */
+  bottom: 0px; /* adjust as needed */
   left: 0;
   right: 0;
   padding: 10px;
+  padding-bottom: 0px;
   background-color: white; /* set to the background color of your page */
 }
 
