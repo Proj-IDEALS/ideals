@@ -1,7 +1,13 @@
-<div style="padding-left: 20px; padding-right: 10px">
+<div style="padding-left: 20px; padding-right: 10px; padding-top: 15px">
 
-  <div class="engraved">
-    <span>Edit assumption</span>
+  <div class="title-container" style="display: flex; align-items: center;">
+    <%= link_to assumptions_path, class: "icon-link", style: "font-size: 20px; position: relative; padding-right: 5px; padding-top: 2px", "data-bs-toggle": "tooltip", "data-bs-placement": "top", title: "Back", onclick: "return confirmNavigation();" do %>
+      <i class="bi bi-arrow-left"></i>
+    <% end %>
+
+    <div class="engraved">
+      <span>Edit Assumption</span>
+    </div>
   </div>
 
   <%= render "form", assumption: @assumption %>
@@ -9,7 +15,20 @@
   <br>
 
   <div>
-    <%= link_to "Show this assumption", @assumption %> |
-    <%= link_to "Back to assumptions", assumptions_path %>
+    <%= link_to "Show this assumption", @assumption %>
   </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+
+    function confirmNavigation() {
+        return confirm('Do you want to go back?');
+    }
+</script>
+

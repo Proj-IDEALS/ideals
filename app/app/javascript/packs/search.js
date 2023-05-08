@@ -10,7 +10,10 @@ $(document).ready(function () {
             });
             const iframe = document.getElementById('iframe');
             $('#autocomplete').autocomplete({
-                source: concepts,
+                source: function (request, response) {
+                    const results = $.ui.autocomplete.filter(concepts, request.term);
+                    response(results.slice(0, 10));
+                },
                 select: function (event, ui) {
                     fadeOutUnconnected(ui.item.id);
                     iframe.src = `/${ui.item.type}/${ui.item.id}`;

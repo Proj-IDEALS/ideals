@@ -1,14 +1,30 @@
-<div style="padding-left: 20px; padding-right: 10px">
+<div style="padding-left: 20px; padding-right: 10px; padding-top: 15px">
 
-  <div class="engraved">
-    <span>New theory</span>
+  <div class="title-container" style="display: flex; align-items: center;">
+    <%= link_to theories_path, class: "icon-link", style: "font-size: 20px; position: relative; padding-right: 5px; padding-top: 2px", "data-bs-toggle": "tooltip", "data-bs-placement": "top", title: "Back", onclick: "return confirmNavigation();" do %>
+      <i class="bi bi-arrow-left"></i>
+    <% end %>
+
+    <div class="engraved">
+      <span>New Theory</span>
+    </div>
   </div>
 
   <%= render "form", theory: @theory %>
 
   <br>
 
-  <div>
-    <%= link_to "Back to theories", theories_path %>
-  </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+
+    function confirmNavigation() {
+        return confirm('Do you want to go back?');
+    }
+</script>
