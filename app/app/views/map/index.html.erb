@@ -32,6 +32,33 @@
       .ui-autocomplete {
           z-index: 1050;
       }
+      @media (max-width: 1200px) {
+  #mobile-menu {
+    display: block !important;
+    padding-right:10px;
+  }
+  .search-bar{
+    
+  }
+  #search-icon{
+    display:none !important;
+  }
+  #mobile-menu-inner:hover{
+    color: var(--bs-btn-color) !important;
+    background-color: var(--bs-btn-bg) !important;
+    border-color: var(--bs-btn-border-color) !important;
+  }
+  #mobile-search-btn:hover{
+    color: var(--bs-btn-color) !important;
+    background-color: var(--bs-btn-bg) !important;
+    border-color: var(--bs-btn-border-color) !important;
+  }
+}
+@media (min-width: 1201px) {
+  #sidebar{
+    left:0px !important;
+  }
+}
   </style>
 </head>
 
@@ -39,8 +66,13 @@
 
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
+<div id="mobile-menu" style="display:none;">
 
-  <div class="d-flex align-items-center justify-content-between">
+<button title="Menu" class="btn btn-outline-dark" id="mobile-menu-inner"><i class="bi bi-list"></i></button>
+<button title="Menu" class="btn btn-outline-dark" id="mobile-search-btn"><i class="bi bi-search"></i></button>
+
+</div>
+  <div class="d-flex align-items-center justify-content-between" id="logo">
     <a href="" class="logo d-flex align-items-center">
       <span class="d-none d-lg-block">IDEALS</span>
     </a>
@@ -53,10 +85,10 @@
     </form>
   </div><!-- End Search Bar -->
 
-  <nav class="header-nav ms-auto">
+  <nav class="header-nav ms-auto" >
     <ul class="d-flex align-items-center">
 
-      <li class="nav-item d-block d-lg-none">
+      <li class="nav-item d-block d-lg-none" id="search-icon">
         <a class="nav-link nav-icon search-bar-toggle " href="#">
           <i class="bi bi-search"></i>
         </a>
@@ -75,8 +107,8 @@
 </header><!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar" style="padding: 0">
-  <iframe id='iframe' class="embed-responsive-item iframe-container" src='/init' style='border:0; width: 100%; height: 95%'></iframe>
+<aside id="sidebar" class="sidebar" style="padding: 0;overflow:hidden;">
+  <iframe id='iframe' class="embed-responsive-item iframe-container" src='/init' style='border:0; width: 100%; height: 100%'></iframe>
 </aside><!-- End Sidebar-->
 
 
@@ -105,5 +137,5 @@
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'search', 'data-turbolinks-track': 'reload' %>
-
+<%= javascript_pack_tag 'sidebar', 'data-turbolinks-track': 'reload' %>
 </html>
