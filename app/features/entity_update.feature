@@ -9,7 +9,7 @@ Feature: update an entity
     | Theory 1  | Desc1       |
     When root page of theory with name="Theory 1" is visited 
     When I click on a link containing the word edit
-    Then I should see "Edit theory"
+    Then I should see "Edit Theory"
     And I should see textbox with id "theory_name" and value "Theory 1"
 
   Scenario: Reach the right edit page for the existing assumption
@@ -18,7 +18,7 @@ Feature: update an entity
     | Assumption 1  | Desc1       |
     When root page of assumption with name="Assumption 1" is visited 
     When I click on a link containing the word edit
-    Then I should see "Edit assumption"
+    Then I should see "Edit Assumption"
     And I should see textbox with id "assumption_name" and value "Assumption 1"
 
   Scenario: Reach the right edit page for the existing practice
@@ -27,7 +27,7 @@ Feature: update an entity
     | Practice 1  | Desc1       |
     When root page of practice with name="Practice 1" is visited 
     When I click on a link containing the word edit
-    Then I should see "Edit practice"
+    Then I should see "Edit Practice"
     And I should see textbox with id "practice_name" and value "Practice 1"
 
   @javascript
