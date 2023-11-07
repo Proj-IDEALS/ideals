@@ -51,3 +51,45 @@ bundle install
 yarn install
 rake
 ```
+
+## Local Deployment with Docker Compose
+
+### Start the Server
+
+```sh
+git clone https://github.com/Proj-IDEALS/ideals.git
+cd ideals
+docker-compose -f docker-compose.local.yml up --build
+```
+
+### Create the Database
+
+```sh
+docker-compose -f docker-compose.local.yml exec db psql -U postgres -c "CREATE DATABASE ideals;"
+```
+
+### Import the Backup Data
+
+```sh
+docker-compose -f docker-compose.prod.yml exec db psql -U postgres -d ideals -f backups/dump_19-04-2023_06_36_25.sql
+```
+
+### Some Useful Command for troubleshoot
+
+To see all the docker container
+```sh
+docker ps -all
+```
+
+To remove one docker container (It is useful when you having issues to start the server, try to remove the old containers and run start server command again)
+```sh
+docker rm ideals_app_1
+```
+
+### To backup the data
+
+```sh
+docker-compose -f docker-compose.prod.yml exec db pg_dump -U postgres -d ideals > backups/backup.sql
+```
+
+⚠️ Remember to run backup command from time to time
